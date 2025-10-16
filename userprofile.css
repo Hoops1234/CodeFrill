@@ -1,0 +1,581 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.sidebarIcon {
+    border-radius: 0%;
+}
+
+.sidebar {
+    background:  #7CB9E8;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible; /* prevent scrollbar */
+}
+.sidebar-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.logout-container {
+    margin-top: auto;
+}
+
+.logout-container:hover{
+    color: black;
+}
+
+.main-content {
+    transition: margin-left 0.3s ease;
+}
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .card{
+    background: black;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.progress-bar {
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    border-radius: 20px;
+}
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    /* Hide sidebar aside */
+    aside.sidebar {
+        display: none;
+    }
+
+    /* Center main content sections */
+    #profile, #skills {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Show mobile header navbar */
+    #mobileHeader {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #7CB9E8;
+        padding: 0.5rem 1rem;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+    #mobileHeader h1 {
+        color: white;
+        margin: 0;
+    }
+
+    #mobileHeader img {
+        cursor: pointer;
+    }
+
+    #mobileHeader ul {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #mobileHeader ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        transition: background-color 0.3s ease;
+    }
+
+    #mobileHeader ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #mobileHeader button {
+        background: #ef4444;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    #mobileHeader button:hover {
+        background-color: #dc2626;
+    }
+
+    /* Adjust main content margin to avoid overlap with fixed header */
+    .main-content {
+        margin-right: 40px;
+        margin-top: 8rem; /* further increased margin-top to avoid overlap with navbar */
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    /* Stack sections in order */
+    #profile {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 900px;
+        align-items: center;
+    }
+    #profile > div.card {
+        width: 100% !important;
+        align-items: center;
+    }
+       
+    #skills {
+        order: 5;
+        align-items: center;
+    }
+
+    /* Personal Stats, Overall Progress, Achievements stacked vertically */
+    #profile > div.card:nth-child(1) {
+        order: 1;
+    }
+    #profile > div.card:nth-child(2) {
+        order: 2;
+    }
+    #profile > div.card:nth-child(3) {
+        order: 3;
+    }
+}
+
+/* Skill improvement and trend styling */
+.skill-trend {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+}
+
+/* Trend styling */
+.skill-trend.improving {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+}
+
+.skill-trend.slightly_improving {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+
+.skill-trend.stable {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+}
+
+.skill-trend.declining {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.skill-trend.needs_improvement {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+/* Improvement styling */
+.skill-improvement.positive {
+    color: #16a34a;
+}
+
+.skill-improvement.negative {
+    color: #dc2626;
+}
+
+.skill-improvement.neutral {
+    color: #6b7280;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .skill-trend.improving {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+body.dark-mode .skill-trend.slightly_improving {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+body.dark-mode .skill-trend.stable {
+    background-color: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+}
+
+body.dark-mode .skill-trend.declining {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+body.dark-mode .skill-trend.needs_improvement {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+body.dark-mode .skill-improvement.positive {
+    color: #4ade80;
+}
+
+body.dark-mode .skill-improvement.negative {
+    color: #f87171;
+}
+
+body.dark-mode .skill-improvement.neutral {
+    color: #9ca3af;
+}
+
+/* Chart styling */
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+#feedback {
+  margin-top: 20px;
+  font-size: 1.1em;
+  text-align: center;
+  color: #ff0000;
+}
+
+#feedback {
+  margin-top: 20px;
+  font-size: 1.1em;
+  text-align: center;
+  color: #0077cc;
+  font-weight: 500;
+}
+
+body.dark-mode #progressChart {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Enhanced chart containers */
+.chart-container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+body.dark-mode .chart-container {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#skillTrendChart, #skillComparisonChart {
+    max-height: 250px;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+body.dark-mode #skillTrendChart, body.dark-mode #skillComparisonChart {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure chart container has proper dimensions */
+#progress {
+    min-height: 400px;
+}
+
+#progress > div {
+    width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    /* Hide sidebar aside */
+    aside.sidebar {
+        display: none;
+    }
+
+    /* Center main content sections */
+    #profile, #progress, #skills {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Show mobile header navbar */
+    #mobileHeader {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #7CB9E8;
+        padding: 0.5rem 1rem;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+    #mobileHeader h1 {
+        color: white;
+        margin: 0;
+    }
+
+    #mobileHeader img {
+        cursor: pointer;
+    }
+
+    #mobileHeader ul {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #mobileHeader ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        transition: background-color 0.3s ease;
+    }
+
+    #mobileHeader ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #mobileHeader button {
+        background: #ef4444;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    #mobileHeader button:hover {
+        background-color: #dc2626;
+    }
+
+    /* Adjust main content margin to avoid overlap with fixed header */
+    .main-content {
+        margin-right: 40px;
+        margin-top: 8rem; /* further increased margin-top to avoid overlap with navbar */
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    /* Stack sections in order */
+    #profile {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 900px;
+    }
+    #profile > div.card {
+        width: 100% !important;
+    }
+    #progress {
+        order: 4;
+    }
+    #skills {
+        order: 5;
+    }
+
+    /* Personal Stats, Overall Progress, Achievements stacked vertically */
+    #profile > div.card:nth-child(1) {
+        order: 1;
+    }
+    #profile > div.card:nth-child(2) {
+        order: 2;
+    }
+    #profile > div.card:nth-child(3) {
+        order: 3;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    /* Hide sidebar aside */
+    aside.sidebar {
+        display: none;
+    }
+
+    /* Center main content sections */
+    #profile, #progress, #skills {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Show mobile header navbar */
+    #mobileHeader {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #7CB9E8;
+        padding: 0.5rem 1rem;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+    #mobileHeader h1 {
+        color: white;
+        margin: 0;
+    }
+
+    #mobileHeader img {
+        cursor: pointer;
+    }
+
+    #mobileHeader ul {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #mobileHeader ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        transition: background-color 0.3s ease;
+    }
+
+    #mobileHeader ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #mobileHeader button {
+        background: #ef4444;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    #mobileHeader button:hover {
+        background-color: #dc2626;
+    }
+
+    /* Adjust main content margin to avoid overlap with fixed header */
+    .main-content {
+        margin-right: 40px;
+        margin-top: 8rem; /* further increased margin-top to avoid overlap with navbar */
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    /* Stack sections in order */
+    #profile {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 900px;
+    }
+    #profile > div.card {
+        width: 100% !important;
+    }
+    #progress {
+        order: 4;
+    }
+    #skills {
+        order: 5;
+    }
+
+    /* Personal Stats, Overall Progress, Achievements stacked vertically */
+    #profile > div.card:nth-child(1) {
+        order: 1;
+    }
+    #profile > div.card:nth-child(2) {
+        order: 2;
+    }
+    #profile > div.card:nth-child(3) {
+        order: 3;
+    }
+}

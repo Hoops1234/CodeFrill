@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFrill | HTML</title>
+<link rel="stylesheet" href="jshandout.css">
+<link rel="stylesheet" href="darkmode.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('darkMode');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedMode === 'enabled' || (!savedMode && prefersDark)) {
+        document.body.classList.add('dark-mode');
+      }
+    });
+</script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="homepage.html">
+      <button class="back-button">&lt;-Back</button>
+     </a> 
+      <h1>JAVASCRIPT</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <div class="for-button">
+        <button id="modBtn">Module</button>
+        <h2><p class="mod-topic">JavaScript Introduction</p></h2>
+        <button id="testBtn" onclick="showText('test')">Test</button>
+        
+      </div>
+    <main>
+
+
+        <div id="module" class="handout">
+          <div class="topic">
+        <ol id="moduleList">
+          <li><a href="handout/JavaScript-Introduction.pdf">JavaScript handout:01 (introduction)</a></li>
+          <li><a href="handout/JavaScript-Operators.pdf">JavaScript handout:02 (operators)</a></li>
+          <li><a href="handout/JavaScript-Variables.pdf">JavaScript handout:03 (variables)</a></li>
+        </ol>
+        </div>
+
+      <div id="test" class="topic">
+        <div class="container2">
+          <ul class="layout">
+            <li class="box">
+              <a href="jsquiz.html">Javascript introduction quiz
+                <button id="getBtn1">get started</button>
+              </a>
+            </li>
+            <li class="box">
+              <a href="jsquiz2.html">Javascript operators quiz
+                <button id="getBtn2">get started</button>
+              </a>
+            </li>
+            <li class="box">
+              <a href="jsquiz3.html">Javascript variables quiz
+                <button id="getBtn3">get started</button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        </div>
+
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+          <div class="note-box">Note 1 <span class="delete-note" title="Delete Note">🗑</span></div>
+          <div class="note-box">Note 2 <span class="delete-note" title="Delete Note">🗑</span></div>
+        </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21
+    </footer>
+  </div>
+
+  <script src="jshandout.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup </title>
+ <link rel="stylesheet" href="signup.css"/>
+ <script src="signup.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <input type="text" id="firstName" placeholder="First Name" required>
+      <div class="error-message" id="firstNameError"></div>
+      <input type="text" id="secondName" placeholder="Second Name (optional)">
+      <div class="error-message" id="secondNameError"></div>
+      <input type="text" id="middleName" placeholder="Middle Name (optional)">
+      <div class="error-message" id="middleNameError"></div>
+      <input type="text" id="lastName" placeholder="Last Name" required>
+      <div class="error-message" id="lastNameError"></div>
+      <input type="text" id="signupEmail" placeholder="Email address" required>
+      <div class="error-message" id="signupEmailError"></div>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+      <div class="error-message" id="signupPasswordError"></div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="termsCheckbox">
+        <label for="termsCheckbox" id="termsLabel" style="cursor: pointer; color: blue; text-decoration: underline;">I agree to the Terms and Conditions</label>
+        <div class="error-message" id="termsError"></div>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p style="text-align:center; margin-top:15px;">
+      <a href="index.html">Already have an account?</a>
+    </p>
+  </div>
+
+  <!-- Terms & Conditions Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <h1>Terms and Conditions</h1>
+      <p><strong>Effective Date:</strong> [Insert Date]</p>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By using CodeFrill, you agree to these Terms and Conditions. If you do not agree, please do not use the site.</p>
+
+      <h2>2. User Responsibilities</h2>
+      <ul>
+        <li>Use CodeFrill for learning and personal growth only.</li>
+        <li>Do not harm or disrupt the platform or other users.</li>
+        <li>Keep your login credentials secure.</li>
+      </ul>
+
+      <h2>3. Content Ownership</h2>
+      <p>All site content belongs to CodeFrill unless otherwise stated. Do not reuse or redistribute without permission.</p>
+
+      <h2>4. User-Generated Content</h2>
+      <p>You retain ownership of your submissions, but grant us permission to display them within the platform.</p>
+
+      <h2>5. Privacy</h2>
+      <p>We respect your privacy. See our <a href="#">Privacy Policy</a> for more details.</p>
+
+      <h2>6. Modifications</h2>
+      <p>We may update these terms at any time. Please check back periodically.</p>
+
+      <h2>7. Termination</h2>
+      <p>We may suspend or terminate accounts that violate these terms.</p>
+
+      <h2>8. Contact Us</h2>
+      <p>If you have questions, email us at <a href="mailto:your@email.com">your@email.com</a>.</p>
+
+      <button id="acceptBtn" class="disabled-btn" disabled>Accept (wait 10s)</button>
+    </div>
+  </div>
+
+ 
+</body>
+</html>

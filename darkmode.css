@@ -1,0 +1,160 @@
+body.dark-mode {
+    background: #181a1b !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode header,
+body.dark-mode .hero-section,
+body.dark-mode .about-section,
+body.dark-mode .course-section {
+    background: #23272f !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .hero-section .title {
+    color: #ffffff ;
+}
+
+body.dark-mode .section-title::after {
+    background: #b5b9e6;
+}
+
+body.dark-mode .navbar .nav-logo .logo-text
+body.dark-mode .navbar .nav-menu .nav-link {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .navbar .nav-menu .nav-link:hover, body.dark-mode .fa-circle-user:hover {
+    color:  #ffd700 !important;
+}
+
+body.dark-mode .course-item {
+    background: #181a1b;
+    border-color: #b5b9e6;
+} 
+
+body.dark-mode #htmlBtn,
+body.dark-mode #javaBtn,
+body.dark-mode #jsBtn,
+body.dark-mode #cssBtn {
+    background: #23272f;
+    color: #b5b9e6;
+    border-color: #b5b9e6;
+}
+
+body.dark-mode #htmlBtn:hover,
+body.dark-mode #javaBtn:hover,
+body.dark-mode #jsBtn:hover,
+body.dark-mode #cssBtn:hover {
+    background: #b5b9e6;
+    color: #23272f;
+}
+
+#darkModeToggle i {
+    transition: color 0.3s;
+}
+
+#darkModeToggle i.fa-moon {
+    color: #ffd700;
+}
+
+#darkModeToggle i.fa-sun {
+    color: #ffb300;
+}
+
+.spin-animation {
+    animation: spin 0.3s linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(180deg);}
+}
+
+ 
+.dark-img {
+    display: none;
+}
+
+ 
+body.dark-mode .light-img {
+    display: none; 
+}
+
+body.dark-mode .dark-img {
+    display: block;
+}
+
+/* Handout page specific styles */
+body.dark-mode header {
+    background: #23272f !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode main {
+    background: #181a1b !important;
+}
+
+body.dark-mode footer {
+    background: #181a1b !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .notes-section {
+    background: #23272f !important;
+}
+
+body.dark-mode .note-box {
+    background: #181a1b !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .module-button {
+    background: #181a1b !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .back-button {
+    background: #181a1b !important;
+    color: #e0e0e0 !important;
+    border-color: #e0e0e0 !important;
+}
+
+body.dark-mode .handout a{
+    color: white;
+}
+
+body.dark-mode .handout a:hover{
+    color: rgb(85, 85, 246);
+}
+
+body.dark-mode .question {
+    background: #000000b4;
+}
+
+body.dark-mode .sidebar {
+    background: #23272f;
+    color: #e0e0e0;
+}
+
+body.dark-mode .for-button {
+    background: #181a1b;
+}
+
+body.dark-mode .box {
+    background-color: black;
+    border: 2px solid white;
+}
+
+body.dark-mode .box:hover {
+    border: 5px solid white;
+}
+
+body.dark-mode #getBtn1:hover, #getBtn2:hover, #getBtn3:hover{
+    background-color: rgba(209, 209, 209, 0.941);
+    color: black;
+}
+
+body.dark-mode #getBtn1:active, #getBtn2:active, #getBtn3:active{
+    background-color: white;
+}

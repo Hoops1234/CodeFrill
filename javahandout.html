@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFrill | HTML</title>
+<link rel="stylesheet" href="javahandout.css">
+<link rel="stylesheet" href="darkmode.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('darkMode');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedMode === 'enabled' || (!savedMode && prefersDark)) {
+        document.body.classList.add('dark-mode');
+      }
+    });
+</script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="homepage.html">
+      <button class="back-button">&lt;-Back</button>
+     </a> 
+      <h1>JAVA</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <body>
+    <div class="for-button">
+        <button id="modBtn">Module</button>
+        <h2><p class="mod-topic">Java Introduction</p></h2>
+        <button id="testBtn" onclick="showText('test')">Test</button>
+      </div>
+    <main>
+
+
+        <div id="module" class="handout">
+          <div class="topic">
+        <ol>
+          <li><a href="handout/JAVA-Introduction.pdf">Java Handout: 01 (introduction)</a></li>
+          <li><a href="handout/Java-Basics.pdf">Java Handout: 02 (basics)</a></li>
+          <li><a href="handout/Java-Methods.pdf">Java Handout: 03 (methods)</a></li>
+        </ol>
+        </div>
+
+      <div id="test" class="topic">
+        <div class="container2">
+          <ul class="layout">
+            <li class="box">
+              <a href="javaquiz.html">Java iintrocution quiz
+                <button id="getBtn1">get started</button>
+              </a>
+            </li>
+            <li class="box">
+              <a href="javaquiz2.html">Java basics quiz
+                <button id="getBtn2">get started</button>
+              </a>
+            </li>
+            <li class="box">
+              <a href="javaquiz3.html">Java methods quiz
+                <button id="getBtn3">get started</button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        </div>
+
+
+
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+          <div class="note-box">Note 1 <span class="delete-note" title="Delete Note">🗑</span></div>
+          <div class="note-box">Note 2 <span class="delete-note" title="Delete Note">🗑</span></div>
+        </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21
+    </footer>
+  </div>
+
+  <script src="javahandout.js" defer></script>
+</body>
+</html>

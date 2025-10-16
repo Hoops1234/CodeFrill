@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFrill | User Profile</title>
+    <link rel="stylesheet" href="userprofile.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Ensure Chart.js is loaded before initializing
+        if (typeof Chart === 'undefined') {
+            console.warn('Chart.js not loaded, loading from CDN...');
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script.onload = function() {
+                console.log('Chart.js loaded successfully');
+            };
+            script.onerror = function() {
+                console.error('Failed to load Chart.js from CDN');
+            };
+            document.head.appendChild(script);
+        }
+    </script>
+    <link rel="stylesheet" href="darkmode.css">
+<script>
+// On page load, check localStorage for dark mode
+document.addEventListener('DOMContentLoaded', () => {
+  const savedMode = localStorage.getItem('darkMode');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (savedMode === 'enabled' || (!savedMode && prefersDark)) {
+    document.body.classList.add('dark-mode');
+  }
+
+  // Initialize everything with real quiz data
+  initializePersonalStats();
+  initializeSkillTracking();
+  initializeAccountActivity();
+
+  // Check if chart needs refresh after quiz completion
+  const shouldRefreshChart = localStorage.getItem('refreshChart') === 'true';
+  if (shouldRefreshChart) {
+      console.log('New quiz data detected, refreshing chart...');
+      localStorage.removeItem('refreshChart'); // Clear the flag
+  }
+
+  // Initialize chart after a longer delay to ensure DOM and Chart.js are ready
+  setTimeout(() => {
+      console.log('Initializing chart after page load...');
+      initializeProgressChart();
+
+      // If new quiz data was detected, refresh again after initialization
+      if (shouldRefreshChart) {
+          setTimeout(() => {
+              console.log('Refreshing chart with new quiz data...');
+              refreshProgressChart();
+          }, 1000);
+      }
+  }, 500);
+});
+</script>
+
+    </head>
+<body class="flex min-h-screen">
+    <!-- Sidebar Navigation -->
+        <aside class="sidebar w-64 p-6 fixed h-full overflow-y-auto">
+            <div class="sidebar-header flex items-center mb-8">
+                <img id="sidebarIcon" src="https://placehold.co/50x50/ffffff/000000?text=UD" alt="Circular icon representing User Dashboard with modern, sleek design featuring an abstract user silhouette in white on a dark blue background symbolizing personalization and navigation" class="w-12 h-12 rounded-full mr-3 cursor-pointer" style="object-fit: cover;">
+                <input type="file" id="sidebarIconInput" accept="image/*" style="display:none" />
+                <h1 class="text-xl font-bold m-0">User Dashboard</h1>
+            </div>
+            <div class="sidebar-content flex flex-col h-full">
+                <nav class="flex-grow">
+                    <ul class="space-y-4">
+                        <li><a href="#profile" class="nav-link block p-3 rounded-lg">User Profile</a></li>
+                        <li><a href="#progress" class="nav-link block p-3 rounded-lg">Study Progress</a></li>
+                        <li><a href="#skills" class="nav-link block p-3 rounded-lg">Skill Development</a></li>
+                    </ul>
+                </nav>
+                <div class="logout-container mt-4">
+                    <button id="logoutBtn" class="nav-link block p-3 rounded-lg w-full text-left hover:bg-gray-200">Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile header for sidebar icon, user dashboard text, and logout -->
+        <header id="mobileHeader" class="hidden fixed top-0 right-0 left-0 bg-white shadow-md p-4 flex items-center justify-between z-50">
+            <div class="flex items-center space-x-4">
+                <img id="mobileSidebarIcon" src="https://placehold.co/50x50/ffffff/000000?text=UD" alt="Sidebar Icon" class="w-12 h-12 rounded-full cursor-pointer" style="object-fit: cover;">
+                <input type="file" id="mobileSidebarIconInput" accept="image/*" style="display:none" />
+                <h1 class="text-xl font-bold m-0">User Dashboard</h1>
+            </div>
+            <ul class="flex space-x-4 ml-6">
+                <li><a href="#profile" class="nav-link p-3 rounded-lg">User Profile</a></li>
+                <li><a href="#progress" class="nav-link p-3 rounded-lg">Study Progress</a></li>
+                <li><a href="#skills" class="nav-link p-3 rounded-lg">Skill Development</a></li>
+            </ul>
+            <button id="mobileLogoutBtn" class="bg-transparent text-blue-600 font-semibold hover:bg-blue-100 px-3 py-1 rounded">Logout</button>
+        </header>
+
+    <!-- Main Content -->
+    <main class="main-content flex-1 p-6 ml-64 animate-fade-in">
+
+        <!-- User Profile Section -->
+        <section id="profile" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold mb-4">Study Streak</h3>
+                <p class="text-3xl font-bold text-blue-600" id="studyStreak">0</p>
+                <p class="text-gray-500">Days in a row</p>
+            </div>
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold mb-4">Study Sessions</h3>
+                <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                    <div class="progress-bar h-4 rounded-full" style="width: 75%"></div>
+                </div>
+                <p class="text-sm text-gray-500" id="studySessions">12 total sessions this month</p>
+            </div>
+            <div class="card p-6">
+                                <h3 class="text-lg font-semibold mb-4">Study Efficiency</h3>
+                <p class="text-3xl font-bold text-green-600" id="studyEfficiency">85%</p>
+                <p class="text-gray-500">Average quiz score</p>
+            </div>
+        </section>
+        <!-- Study Progress Chart -->
+        <section id="progress" class="card p-6 mb-6">
+            <h3 class="text-xl font-semibold mb-4">Study Progress & Skill Improvement</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="chart-container">
+                    <canvas id="progressChart" width="400" height="300"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="studyHoursChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                    <p class="text-sm text-gray-600">Total Study Hours</p>
+                    <p class="text-2xl font-bold text-blue-600" id="totalStudyHours">0h</p>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <p class="text-sm text-gray-600">Average Score</p>
+                    <p class="text-2xl font-bold text-green-600" id="averageScore">0%</p>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <p class="text-sm text-gray-600">Quizzes Completed</p>
+                    <p class="text-2xl font-bold text-purple-600" id="quizzesCompleted">0</p>
+                </div>
+                <div class="text-center p-4 bg-orange-50 rounded-lg">
+                    <p class="text-sm text-gray-600">Study Efficiency</p>
+                    <p class="text-2xl font-bold text-orange-600" id="studyEfficiency">0%</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        
+        <!-- Skill Development -->
+        <section id="skills" class="card p-6 mb-6">
+            <h3 class="text-xl font-semibold mb-4">Skill Development Map</h3>
+            <p class="mb-4 text-gray-600">Programming skills based on quiz performance and study progress.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="skillContainer">
+                <div class="text-center skill-item" data-skill="JavaScript">
+                    <div class="w-16 h-16 mx-auto bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-2 skill-badge">JS</div>
+                    <p class="text-sm font-semibold">JavaScript</p>
+                    <p class="text-xs text-gray-500 skill-level">Level <span class="js-level">1</span></p>
+                    <p class="text-xs text-gray-500 skill-points"><span class="js-points">0</span> XP</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-1 skill-progress">
+                        <div class="bg-blue-500 h-2 rounded-full skill-progress-bar js-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs skill-trend js-trend mt-1">📈 Stable</p>
+                    <p class="text-xs skill-improvement js-improvement mt-1">+0%</p>
+                </div>
+                <div class="text-center skill-item" data-skill="HTML">
+                    <div class="w-16 h-16 mx-auto bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-2 skill-badge">HT</div>
+                    <p class="text-sm font-semibold">HTML</p>
+                    <p class="text-xs text-gray-500 skill-level">Level <span class="html-level">1</span></p>
+                    <p class="text-xs text-gray-500 skill-points"><span class="html-points">0</span> XP</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-1 skill-progress">
+                        <div class="bg-green-500 h-2 rounded-full skill-progress-bar html-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs skill-trend html-trend mt-1">📈 Stable</p>
+                    <p class="text-xs skill-improvement html-improvement mt-1">+0%</p>
+                </div>
+                <div class="text-center skill-item" data-skill="CSS">
+                    <div class="w-16 h-16 mx-auto bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-2 skill-badge">CS</div>
+                    <p class="text-sm font-semibold">CSS</p>
+                    <p class="text-xs text-gray-500 skill-level">Level <span class="css-level">1</span></p>
+                    <p class="text-xs text-gray-500 skill-points"><span class="css-points">0</span> XP</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-1 skill-progress">
+                        <div class="bg-yellow-500 h-2 rounded-full skill-progress-bar css-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs skill-trend css-trend mt-1">📈 Stable</p>
+                    <p class="text-xs skill-improvement css-improvement mt-1">+0%</p>
+                </div>
+                <div class="text-center skill-item" data-skill="Java">
+                    <div class="w-16 h-16 mx-auto bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-2 skill-badge">JV</div>
+                    <p class="text-sm font-semibold">JAVA</p>
+                    <p class="text-xs text-gray-500 skill-level">Level <span class="java-level">1</span></p>
+                    <p class="text-xs text-gray-500 skill-points"><span class="java-points">0</span> XP</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-1 skill-progress">
+                        <div class="bg-purple-500 h-2 rounded-full skill-progress-bar java-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs skill-trend java-trend mt-1">📈 Stable</p>
+                    <p class="text-xs skill-improvement java-improvement mt-1">+0%</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+<script src="userprofile.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI JavaScript Introduction Quiz Generator</title>
+    <link rel="stylesheet" href="cssquiz.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('darkMode');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedMode === 'enabled' || (!savedMode && prefersDark)) {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <h1>AI JavaScript Introduction Quiz Generator</h1>
+            <p class="quiz-description">Test your JavaScript programming fundamentals with AI-generated questions</p>
+        </header>
+
+        <div class="quiz-setup">
+            <div class="setup-card">
+                <h2>Quiz Configuration</h2>
+                <div class="form-group">
+                    <label for="questionCount">Number of Questions:</label>
+                    <select id="questionCount">
+                        <option value="5">5 Questions</option>
+                        <option value="10" selected>10 Questions</option>
+                        <option value="15">15 Questions</option>
+                        <option value="20">20 Questions</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Question Types:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="multipleChoice" checked>
+                            <span class="checkmark"></span>
+                            Multiple Choice
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="fillBlanks" checked>
+                            <span class="checkmark"></span>
+                            Fill in the Blanks
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="identification" checked>
+                            <span class="checkmark"></span>
+                            Identification
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="difficulty">Difficulty Level:</label>
+                    <select id="difficulty">
+                        <option value="beginner" selected>Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <button id="generateQuiz" class="btn-primary">Generate Quiz</button>
+            </div>
+        </div>
+
+        <div id="quizArea" class="quiz-area" style="display: none;">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
+            </div>
+
+            <div class="question-container">
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="question-number">Question <span id="qNumber">1</span></span>
+                        <span class="question-type" id="qType">Multiple Choice</span>
+                    </div>
+                    <div class="question-content">
+                        <p id="questionText"></p>
+                        <div id="optionsContainer" class="options-container"></div>
+                        <div id="inputContainer" class="input-container" style="display: none;">
+                            <input type="text" id="userInput" placeholder="Type your answer here...">
+                        </div>
+                    </div>
+                    <div class="question-footer">
+                        <button id="prevQuestion" class="btn-secondary" style="display: none;">Previous</button>
+                        <button id="nextQuestion" class="btn-primary">Next</button>
+                        <button id="submitQuiz" class="btn-success" style="display: none;">Submit Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsArea" class="results-area" style="display: none;">
+            <div class="results-card">
+                <h2>Quiz Results</h2>
+
+                <div class="performance-overview">
+                    <div class="skill-level-card">
+                        <h3>Current Skill Level</h3>
+                        <div class="skill-badge" id="skillLevel">Novice</div>
+                        <div class="skill-trend" id="skillTrend">First attempt</div>
+                    </div>
+
+                    <div class="improvement-card">
+                        <h3>Performance Analysis</h3>
+                        <div class="improvement-metric">
+                            <span class="metric-label">Score Improvement:</span>
+                            <span class="metric-value" id="scoreImprovement">0%</span>
+                        </div>
+                        <div class="improvement-metric">
+                            <span class="metric-label">Study Efficiency:</span>
+                            <span class="metric-value" id="studyEfficiency">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="study-hours-card">
+                        <h3>Study Hours</h3>
+                        <div class="hours-display">
+                            <div class="hours-metric">
+                                <span class="hours-label">This Session:</span>
+                                <span class="hours-value" id="actualHours">0h</span>
+                            </div>
+                            <div class="hours-metric">
+                                <span class="hours-label">Recommended:</span>
+                                <span class="hours-value" id="recommendedHours">0h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Correct Answers:</span>
+                        <span class="stat-value" id="correctAnswers">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Questions:</span>
+                        <span class="stat-value" id="totalQuestionsResult">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Time Taken:</span>
+                        <span class="stat-value" id="timeTaken">0:00</span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="retakeQuiz" class="btn-primary">Retake Quiz</button>
+                    <button id="newQuiz" class="btn-secondary">Generate New Quiz</button>
+                </div>
+
+                <div class="question-review">
+                    <h3>Question Review</h3>
+                    <div id="reviewContainer"></div>
+                </div>
+
+                <div class="progress-graph-section">
+                    <div class="graph-header">
+                        <h3>Skill Improvement Progress</h3>
+                        <button id="toggleGraph" class="btn-secondary">Show Progress Graph</button>
+                    </div>
+                    <div id="progressGraphContainer" class="progress-graph-container" style="display: none;">
+                        <!-- Graph will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="cssquiz.js"></script>
+</body>
+</html>

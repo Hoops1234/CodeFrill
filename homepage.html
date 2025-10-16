@@ -1,0 +1,250 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFrill | Homepage</title>
+    <!--Linking Font Awesome for icons-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">   
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+     <link rel="stylesheet" href="homepage.css">
+     <link rel="stylesheet" href="profilemenu.css">
+     <link rel="stylesheet" href="darkmode.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+     <link rel="stylesheet" href="courses.css">
+
+
+    
+      
+  
+   
+    <script src="review.js" defer ></script>
+      <ion-icon name="logo-facebook"></ion-icon>
+</head>
+<body>
+   <!--Header / Navbar--> 
+<header>
+    <nav class="navbar section-content">
+        <a href="#" class="nav-logo">
+            <h2 class="logo-text" href="homepage.html">CodeFrill</h2>
+        </a>
+      
+        <ul class="nav-menu">
+            <button id="menu-close-button" class="material-symbols-outlined">menu</button>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="#course" class="nav-link">Course</a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+            </li>
+           
+            <a href="userprofile.html">
+            <i class="fa-regular fa-circle-user" ></i></a>
+             
+            <button id="darkModeToggle" title="Toggle dark mode" style="margin-left: 15px; font-size: 1.2rem;">
+        <i id="darkModeIcon" class="fa-solid fa-moon"></i>
+                
+        </ul>
+      </nav>
+ 
+    </header>
+
+<main>
+    <!--Hero Section-->
+    <section class="hero-section">
+        <div class="section-content">
+            <div class="hero-details">
+                <h2 class="title">Welcome to your coding sanctuary.</h2>
+                <h3 class="subtitle">A space to grow, at your own pace.</h3>
+                <br>
+                <p class="description">CodeFrill isn’t just a platform—it’s a quiet corner 
+                    where your progress matters. No rush, no pressure. Just steady growth, 
+                    support, and the joy of learning.</p>
+
+                <div class="buttons">
+                    <button class="button start-now" onclick="openModal()">Start Now!</button>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="img/prog.png" alt="" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section-->
+ <section class="about-section" id="about">
+    <div class="section-content">
+            <div class="about-image-wrapper">
+            <img src="img/programming.png" alt="About" class="about-image">
+            </div>
+        <div class="about-details">
+            <h2 class="section-title">About Us</h2>
+            <p class="text">At CodeFrill, we believe coding should feel like coming home to a space that understands you. Whether you're just starting out or refining your skills, this is your sanctuary—a place to grow at your own pace, without pressure or comparison.
+            <br><br>We’re more than a platform. We’re a companion for your journey. Here, you’ll find hands-on challenges, real-world practice, and a community that celebrates small wins and honest effort. We know the road can be confusing, even discouraging at times. That’s why we’ve built a space where learning feels safe, steady, and meaningful.
+            <br><br>From your first “Hello World” to your proudest project, we’re here to support your quiet breakthroughs, your late-night triumphs, and your moments of doubt. Progress isn’t a race—it’s a rhythm. And at CodeFrill, we honor yours.
+            </p>
+            <div class="social-link-list">
+                <a href="" class="social-link"><i class="fa-brands 
+                    fa-facebook"></i></a>
+                    <a href="" class="social-link"><i class="fa-brands 
+                    fa-instagram"></i></a>
+                    <a href="" class="social-link"><i class="fa-brands 
+                    fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+ </section>
+
+    <!--Courses Section-->
+    <section class="course-section" id="course">
+        <h2 class="section-title">Programming Languages</h2>
+        <div class="section-content">
+            <ul class="course-list">
+                <li class="course-item">
+                    <img src="img/HTML Logo.png" alt="HTML" class="course-image html-img light-img">
+                    <img src="img/html black.png" alt="HTML dark" class="course-image html-img dark-img">
+                    <h3 class="name">HTML</h3>
+                    <p class="text">HTML is your gentle introduction to web development,
+                        where bold headlines and soft paragraphs come together with 
+                        clarity and care. Like a smooth, reliable blend, it forms the 
+                        essential base for every website recipe. With HTML, you’ll turn 
+                        ideas into structure and screens into meaningful stories.
+                    </p>
+                    <a href="htmlhandout.html"><button id="htmlBtn">Start</button></a>
+                </li>
+                <li class="course-item">
+                    <img src="img/java logo.png" alt="java" class="course-image java-img light-img">
+                    <img src="img/java black.png" alt="java dark" class="course-image java-img dark-img">
+                    <h3 class="name">Java</h3>
+                    <p class="text">Java is your bold, full-bodied brew—crafted for 
+                        building powerful, scalable applications that stand the test of 
+                        time. From mobile apps to enterprise systems, it’s the language 
+                        that fuels performance and reliability. With its strong foundation 
+                        and object-oriented design, Java teaches you to think in structures, 
+                        solve complex problems, and write code that’s both elegant and efficient.</p>
+                        <a href="javahandout.html"><button id="javaBtn">Start</button></a>
+                </li>
+                <li class="course-item">
+                    <img src="img/JS Logo.png" alt="Js" class="course-image js-img light-img">
+                    <img src="img/js black.png" alt="Js dark" class="course-image js-img dark-img">
+                    <h3 class="name">JavaScript</h3>
+                    <p class="text">JavaScript adds the sweetness and spark to your web 
+                        creations—bringing static pages to life with motion, interaction, 
+                        and personality. It’s the language of the browser, where buttons 
+                        respond, menus slide, and content updates in real time. With 
+                        JavaScript, you’ll learn how to create seamless user experiences, 
+                        handle data dynamically, and build features that feel intuitive and 
+                        alive.</p>
+                        <a href="jshandout.html"><button id="jsBtn">Start</button></a>
+                </li>
+                <li class="course-item">
+                    <img src="img/CSS Logo.png" alt="CSS" class="course-image css-img light-img">
+                    <img src="img/css black.png" alt="CSS dark" class="course-image css-img dark-img">
+                    <h3 class="name">CSS</h3>
+                    <p class="text">CSS is the gentle touch of design—the garnish that 
+                        transforms raw structure into visual harmony. With colors, spacing, 
+                        and layout tools at your fingertips, CSS lets you shape the look and 
+                        feel of your site with precision and creativity. Learn to style 
+                        elements, build responsive designs, and create interfaces that are 
+                        both beautiful and functional. Like the perfect finishing touch, CSS 
+                        makes your content not just readable, but irresistible.</p>
+                      <a href="csshandout.html"><button id="cssBtn">Start</button></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+        <!-- Footer Section-->
+     <footer class="footer-section" id="contact">
+        <div class="section-content">
+            <p class="copyright-text">© CodeFrill | ITMAWD21</p>
+            <div class="social-link-list">
+                <a href="" class="social-link"><i class="fa-brands
+                    fa-facebook"></i></a>
+                    <a href="" class="social-link"><i class="fa-brands
+                    fa-instagram"></i></a>
+                    <a href="" class="social-link"><i class="fa-brands
+                    fa-x-twitter"></i></a>
+            </div>
+            <p class="policy-text">
+                <a href="#" class="policy-link">Privacy Policy</a>
+            </p>
+        </div>
+     </footer>
+</main>
+
+<!-- Courses Modal -->
+<div id="coursesModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+
+        <div class="swiper" style="width: 100%; height: 100%; position: relative;">
+            <div class="swiper-wrapper">
+                <div class="card-item swiper-slide">
+                    <a href="htmlhandout.html" class="card-link">
+                        <img src="img/HTML WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge">Html</p>
+                        <h2 class="card-title">HTML is your gentle introduction to web development, where bold headlines and soft paragraphs come together with clarity and care.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="javahandout.html" class="card-link">
+                        <img src="img/JAVA WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge java">Java</p>
+                        <h2 class="card-title">Java is your bold, full-bodied brew—crafted for building powerful, scalable applications that stand the test of time.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="jshandout.html" class="card-link">
+                        <img src="img/JS WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge js">JavaScript</p>
+                        <h2 class="card-title">JavaScript adds the sweetness and spark to your web creations—bringing static pages to life with motion, interaction, and personality.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="csshandout.html" class="card-link">
+                        <img src="img/CSS WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge css">Css</p>
+                        <h2 class="card-title">CSS is the gentle touch of design—the garnish that transforms raw structure into visual harmony.</h2>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Swiper Navigation and Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</div>
+
+<script src="homepage.js"></script>
+<script src="darkmode.js"></script>
+<script src="menu.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+document.querySelectorAll('.nav-link, .nav-logo').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            if (targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    });
+});
+</script> 
+</body>
+</html> 

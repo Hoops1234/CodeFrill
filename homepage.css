@@ -1,0 +1,1061 @@
+ @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Miniver&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Caveat Brush", cursive;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+ 
+:root{
+    --white-color: #F5F5F3;
+    --dark-color: #2E2E2E;
+    --primary-color:#A7BFA4;
+    --secondary-color: #343a40;
+    --hover-color: #3A5A5E;
+    --alice-color: #F0F8FF;
+    --text-color: #6B7280;
+
+    --font-size-s: 0.9rem;
+    --font-size-n: 1rem;
+    --font-size-m: 1.12rem;  
+    --font-size-l: 1.5rem;
+    --font-size-xl: 2rem;
+    --font-size-xxl: 2.3rem;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --border-radius-s: 8px;
+    --border-radius-m: 30px;
+    --border-radius-circle: 50%;
+
+    --site-max-width: 1300px;
+}
+
+/*Styling for the whole site*/
+ 
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img {
+    width: 100%;
+    -webkit-user-drag: none;
+    -user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -ms-user-drag: none;
+}
+
+.section-title {
+    text-align: center;
+    padding: 60px 0 100px;
+    text-transform: uppercase;
+    font-size: var(--font-size-xl);
+}
+
+.section-title::after {
+    content: "";
+    width: 80px;
+    height: 5px;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: var(--border-radius-s);
+    background: var(--secondary-color);
+}
+
+/* Navbar Styling */
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    background: var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header .navbar {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .nav-logo .logo-text {
+    color: var(--white-color);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.fas {
+  color: var(--white-color);
+  font-size: var(--font-size-l);
+  cursor: pointer;
+}
+
+.navbar .nav-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .nav-menu .nav-link {
+    padding: 10px 18px;
+    color: var(--white-color);   
+    font-size: var(--font-size-m); 
+    border-radius: var(--border-radius-m);
+    transition: 0.3s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+.navbar :where(#menu-close-button, #menu-open-button) {
+    display: none;
+}
+
+.fa-circle-user {
+     color: var(--white-color);    
+    border-radius: var(--border-radius-m);
+    transition: 0.3s ease;
+    display: grid;
+    margin-top: 5px;
+    font-size: 1.25rem;
+     cursor: pointer;
+}
+
+.fa-circle-user:hover {
+    color: var(--hover-color);
+}
+
+/*Hero Section styling*/
+.hero-section {
+    min-height: 100vh;
+    background: var(--white-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-section .section-content {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+    justify-content: space-between;
+}
+
+.hero-section .hero-details .title {
+    font-size: var(--font-size-xxl);
+    color: var(--white-color);
+    font-family: "Miniver", sans-serif;
+   position: relative;
+   left: 6%;
+}
+
+.hero-section .hero-details .subtitle {
+    margin-top: 8px;
+    max-width: 70%;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    position: relative;
+    left: 6%;
+}
+
+.hero-section .hero-details .description {
+    max-width: 70%;
+    margin: 24px 0 40px;
+    font-size: var(--font-size-m);
+    position: relative;
+    left: 6%;
+}
+
+.hero-section .hero-details .buttons {
+    color: var(--hover-color);
+    display: flex;
+    gap: 23px;
+    position: relative;
+    left: 6%;
+}
+
+.hero-section .hero-details .button {
+    padding: 10px 26px;
+    border: 2px solid transparent;
+    color: var(--white-color);
+    border-radius: var(--border-radius-m);
+    background: var(--secondary-color);
+    font-weight: var(--font-weight-medium);
+    transition: 0.3s ease;
+}
+
+.hero-section .hero-details .button:hover {
+    color: var(--text-color);
+    border-color: var(--dark-color);
+    background: var(--hover-color);
+}
+
+.hero-section .hero-image-wrapper {
+    max-width: 500px;
+    margin-right: 95px;
+    position: relative;
+    left: 6%;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* New animation for sliding button from left to right */
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation utility class for slideRight */
+.animate-slideRight {
+    animation-name: slideRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+/* Apply animation to start-now button */
+.hero-section .hero-details .start-now {
+    animation: slideRight 1s ease-out forwards;
+}
+
+/* Animation utility classes */
+.animate-fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+}
+
+.animate-fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+}
+
+/* About Styling */
+.about-section {
+    padding: 120px 0;
+    background: var(--white-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-section .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-section .about-image-wrapper .about-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius-circle);
+}
+
+.about-section .about-details .section-title {
+    padding: 0;
+}
+
+.about-section .about-details {
+    max-width: 50%;
+}
+
+.about-section .about-details .text {
+    line-height: 30px;
+    margin: 50px 0 30px;
+    text-align: center;
+    font-size: var(--font-size-m);
+}
+
+.about-section .social-link-list {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.about-section .social-link-list .social-link {
+    color: var(--primary-color);
+    font-size: var(--font-size-l);
+    transition: 0.2s ease;
+}
+
+.about-section .social-link-list .social-link:hover {
+    color: var(--secondary-color);
+}
+
+/*Courses styling*/
+.course-section {
+    color: var(--dark-color);
+    background: var(--white-color);
+    padding: 50px 0 100px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/*Hero Section styling*/
+.hero-section {
+    min-height: 100vh;
+    background: var(--alice-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-section .section-content {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--primary-color);
+    justify-content: space-between;
+}
+
+.hero-section .hero-details .title {
+    font-size: var(--font-size-xxl);
+    color: var(--secondary-color);
+    font-family: "Miniver", sans-serif;
+   position: relative;
+   left: 6%;
+}
+
+.hero-section .hero-details .subtitle {
+    margin-top: 8px;
+    max-width: 70%;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    position: relative;
+    left: 6%;
+}
+
+.hero-section .hero-details .description {
+    max-width: 70%;
+    margin: 24px 0 40px;
+    font-size: var(--font-size-m);
+    position: relative;
+    left: 6%;
+}
+
+.hero-section .hero-details .buttons {
+    display: flex;
+    gap: 23px;
+    position: relative;
+    left: 6%;
+}
+
+.hero-section .hero-details .button {
+    padding: 10px 26px;
+    border: 2px solid transparent;
+    color: var(--primary-color);
+    border-radius: var(--border-radius-m);
+    background: var(--secondary-color);
+    font-weight: var(--font-weight-medium);
+    transition: 0.3s ease;
+}
+
+.hero-section .hero-details .button:hover {
+    color: var(--primary-color);
+    border-color: var(--dark-color);
+    background: transparent;
+}
+
+.hero-section .hero-image-wrapper {
+    max-width: 500px;
+    margin-right: 95px;
+    position: relative;
+    left: 6%;
+}
+
+/*About Styling*/
+.about-section {
+    padding: 120px 0;
+    background: var(--light-pink-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-section .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-section .about-image-wrapper .about-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius-circle);
+}
+
+.about-section .about-details .section-title {
+    padding: 0;
+}
+
+.about-section .about-details {
+    max-width: 50%;
+}
+
+.about-section .about-details .text {
+    line-height: 30px;
+    margin: 50px 0 30px;
+    text-align: center;
+    font-size: var(--font-size-m);
+}
+
+.about-section .social-link-list {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.about-section .social-link-list .social-link {
+    color: var(--primary-color);
+    font-size: var(--font-size-l);
+    transition: 0.2s ease;
+}
+
+.about-section .social-link-list .social-link:hover {
+    color: var(--secondary-color);
+}
+
+/*Courses styling*/
+.course-section {
+    color: var(--dark-color);
+    background: var(--white-color);
+    padding: 50px 0 100px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.course-section .course-list {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.course-section .course-list .course-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% / 3 - 110px);
+}
+
+.course-section .course-list .course-item .course-image {
+    max-width: 83%;
+    aspect-ratio: 1;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.course-section .course-list .course-item .name {
+    margin: 12px 0;
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-semibold);
+}
+
+.course-section .course-list .course-item .text {
+    font-size: var(--font-size-m);
+}
+
+/* courses border */
+.course-item {
+    border: solid 1px var(--dark-color);
+    border-radius: 2px 9px;
+    border-top: solid 1px var(--dark-color);
+    border-bottom: solid 1px var(--dark-color);
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#htmlBtn, #javaBtn, #jsBtn, #cssBtn {
+    color: var(--dark-color);
+    margin-top: 10px;
+    background-color: var(--alice-color);
+    border: solid 1px var(--dark-color);
+    border-radius: 8px;
+    padding: 2px 35px;
+    margin: 5px;
+    font-family: serif;
+    font-size: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+#htmlBtn:hover, #javaBtn:hover, #jsBtn:hover, #cssBtn:hover {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+
+
+/* Footer Section */
+.footer-section {
+    padding: 20px 0;
+    background: var(--dark-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-section .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-section :where(.copyright-text, .social-link, .policy-link) {
+    color: var(--white-color);
+    transition: 0.2s ease;
+}
+
+.footer-section .social-link-list {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-section .social-link-list .social-link {
+    font-size: var(--font-size-l);
+}
+
+.footer-section .social-link-list .social-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsive media query code for max width 1024px */
+@media screen and (max-width: 1024px) {
+    .course-section .course-list {
+        gap: 50px;
+    }
+
+    .course-section .course-list .course-item {
+        width: calc(100% / 3 - 60px);
+    }
+
+    
+}
+
+/* Responsive media query code for max width 900px */
+@media screen and (max-width: 900px) {
+    :root {
+        --font-size-m: 1rem;  
+        --font-size-l: 1.3rem;
+        --font-size-xl: 1.5rem;
+        --font-size-xxl: 1.8rem;
+    }
+
+    body.show-mobile-menu header::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar :where(#menu-close-button, #menu-open-button) {
+        display: flex;
+        font-size: var(--font-size-l);
+    }
+
+    .navbar #menu-close-button {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+
+    .navbar #menu-open-button {
+        color: var(--white-color);
+    }
+
+    .navbar .nav-menu{
+        display: block;
+        position: fixed;
+        left: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        background: var(--white-color);
+        transition: left 0.2s ease;
+    }
+
+    body.show-mobile-menu .navbar .nav-menu {
+        left: 0;
+    }
+
+    .navbar .nav-menu .nav-link {
+        color: var(--dark-color);
+        display: block;
+        margin-top: 17px;
+        font-size: var(--font-size-l);
+    }
+/*Hero*/
+    .hero-section .section-content {
+        gap: 50px;
+        text-align: center;
+        padding: 30px 20px 20px;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .hero-section .hero-details :is(.subtitle, .description), .about-section .anout-details {
+        max-width: 100%;
+    }
+
+    .hero-section .hero-details .buttons {
+        justify-content: center;
+    }
+
+    .hero-section .hero-image-wrapper {
+        max-width: 270px;
+        margin-right: 0;
+    }
+/*About*/
+    .about-section .section-content {
+        gap: 70px;
+        flex-direction: column;
+    }
+
+    .about-section .about-image-wrapper .about-image {
+        width: 100%;
+        height: 100%;
+        max-width: 250px;
+        aspect-ratio: 1;
+    }
+
+/* Course */
+    .course-section .course-list {
+        gap: 25px;
+    }
+
+    .course-section .course-list .course-item {
+        width: calc(100% / 3 - 50px);
+    }
+
+    .course-section .course-list .course-item .course-image {
+        max-width: 200px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.modal-content {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-m);
+    max-width: 90vw;
+    max-height: 85vh;
+    width: 1000px;
+    position: relative;
+}
+
+
+/* Modal Swiper Card Images - Compact sizing */
+.modal .card-image {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* Swiper Container Styling */
+.modal .swiper {
+    width: 100% !important;
+    height: 100% !important;
+    padding-bottom: 50px !important;
+    position: relative !important;
+}
+
+.modal .swiper-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    transition-property: transform !important;
+}
+
+.modal .swiper-slide {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    padding: 20px !important;
+}
+
+/* Modal Card Styling - Apply courses.css styles to modal only */
+.modal .card-link {
+    user-select: none;
+    display: block;
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.2s ease;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+
+
+
+
+/* Swiper Navigation and Pagination */
+.modal .swiper-button-next,
+.modal .swiper-button-prev {
+    color: var(--primary-color) !important;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: -20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 10 !important;
+}
+
+.modal .swiper-button-next:after,
+.modal .swiper-button-prev:after {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+.modal .swiper-button-next:hover,
+.modal .swiper-button-prev:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+    transform: scale(1.1);
+}
+  
+
+
+.modal .swiper-pagination {
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 10 !important;
+    position: absolute !important;
+    width: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 15px !important;
+}
+
+.modal .swiper-pagination-bullet {
+    background: rgba(124, 185, 232, 0.8) !important;
+    opacity: 1 !important;
+    width: 12px !important;
+    height: 12px !important;
+    margin: 0 4px !important;
+    transition: all 0.3s ease;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    cursor: pointer !important;
+}
+
+.modal .swiper-pagination-bullet-active {
+    background: var(--primary-color) !important;
+    transform: scale(1.2);
+}
+
+/* Additional Swiper Pagination Styles - Cleaned up */
+.modal .swiper-pagination {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 10 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.modal .swiper-pagination-bullet {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    background: rgba(124, 185, 232, 0.6) !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    margin: 0 2px !important;
+}
+
+.modal .swiper-pagination-bullet-active {
+    background: var(--primary-color) !important;
+    transform: scale(1.3) !important;
+    box-shadow: 0 2px 8px rgba(124, 185, 232, 0.4) !important;
+}
+
+.modal .card-link:hover {
+    border-color: rgb(93, 126, 215);
+}
+
+.modal .card-image {
+    width: 120px !important;
+    height: 140px !important;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 10px;
+}
+
+.modal .badge {
+    color: #ff3c00;
+    background: rgb(0, 0, 0);
+    padding: 8px 16px;
+    margin: 16px 0 18px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    width: fit-content;
+    border-radius: 50px;
+}
+
+.modal .badge.java {
+    color: white;
+    background: black;
+}
+
+.modal .badge.js {
+    color: yellow;
+    background: black;
+}
+
+.modal .badge.css {
+    color: rgb(89, 138, 229);
+    background: black;
+}
+
+.modal .card-title {
+    font-size: 1.19rem;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.modal .card-button {
+    height: 35px;
+    width: 35px;
+    color: #5372f0;
+    border-radius: 50px;
+    margin: 20px 0 5px;
+    background: none;
+    cursor: pointer;
+    border: 2px solid lightblue;
+    transform: rotate(-45deg);
+    transition: 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .card-link:hover .card-button {
+    color: rgb(255, 255, 255);
+    background: #5372f0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--dark-color);
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(0.8) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal responsive design */
+@media screen and (max-width: 1280px) {
+    .modal.show {
+        padding: 0 20px;
+    }
+
+    .modal-content {
+        width: calc(100vw - 40px);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .modal.show {
+        padding: 0 15px;
+    }
+
+    .modal-content {
+        width: calc(100vw - 30px);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .modal-content {
+        width: 90vw;
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 95vw;
+        max-height: 90vh;
+        padding: 12px;
+        margin: 10px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 98vw;
+        max-height: 95vh;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .close-btn {
+        top: 5px;
+        right: 10px;
+        font-size: 20px;
+    }
+}
+
+/* Dark mode support for modal */
+body.dark-mode .modal-content {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+
+body.dark-mode .close-btn {
+    color: var(--white-color);
+}
+
+body.dark-mode .close-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Responsive media query code for max width 640px */
+@media screen and (max-width: 640px) {
+    .course-section .course-list {
+        gap: 50px;
+    }
+
+    .course-section .course-list .course-item {
+        width: 100%;
+    }
+}

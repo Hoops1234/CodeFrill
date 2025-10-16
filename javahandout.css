@@ -1,0 +1,249 @@
+/* Handout list styles */
+.handout li {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.handout a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: 0.08s ease-in;
+}
+
+
+
+.handout a:hover {
+  color: rgb(85, 85, 246);
+  text-decoration: dashed wheat;
+}
+
+/* Global styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #edecec;
+}
+
+/* Container for the entire page */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #A7BFA4;
+  color: white;
+  padding: 10px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 900;
+}
+
+.for-button {
+  display: flex;
+  align-items: center;
+}
+
+.mod-topic {
+  margin-left: 30px;
+}
+
+#modBtn {
+  border: 3px solid rgb(0, 64, 255);
+  border-radius: 9px;
+  padding: 3px 20px;
+  margin: 10px;
+  margin-left: 55px;
+  cursor: pointer;
+  transition: 0.08s;
+}
+
+#testBtn {
+  position: absolute;
+  border: 3px solid rgb(0, 64, 255);
+  border-radius: 9px;
+  padding: 3px 20px;
+  margin: 10px;
+  margin-left: 30%;
+  cursor: pointer;
+  transition: 0.08s;
+}
+
+#modBtn:hover, #testBtn:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+#testBtn:active, #modBtn:active {
+  background-color: white;
+  color: black;
+}
+
+.layout {
+  width: 100%;
+
+  display: flex;
+  gap: 16px;
+}
+
+.box {
+        width: 200px;
+      height: 200px;
+      background-color: #A7BFA4;
+      border: 2px solid #333;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: sans-serif;
+      transition: 0.08s ease-in-out;
+}
+
+.box:hover {
+  border: 5px solid;
+ border-color: black; 
+}
+
+#getBtn1, #getBtn2, #getBtn3 {
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#getBtn1:hover, #getBtn2:hover, #getBtn3:hover{
+  background-color: #A7BFA4;
+  border: 2px solid black;
+  color: white;
+}
+
+#getBtn1:active, #getBtn2:active, #getBtn3:active {
+  background-color: black;
+  color: white;
+}
+
+/* Back button */
+.back-button {
+  padding: 5px 15px;
+  border: 1.5px solid black;
+  border-radius: 25px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Main content area */
+main {
+  flex: 1;
+  display: flex;
+  background-color: #edecec;
+  padding-right: 320px; /* Space for notepad */
+}
+
+/* Right notes section */
+.notes-section {
+  position: absolute;
+    top: 9%;
+    left: 20%;
+    flex: 1.5;
+    background-color: #A7BFA4;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-left: 64.8%;
+    height: 89%;
+}
+
+/* Notes title with plus button */
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.notes-header span {
+  font-weight: 600;
+}
+
+.add-note-btn {
+  font-weight: 900;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Note input */
+.note-input {
+  height: 60px;
+  margin-bottom: 20px;
+  resize: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Existing notes container */
+.notes-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Each note box */
+.note-box {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  position: relative;
+  min-height: 50px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Delete button for notes */
+.delete-note {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  color: black;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 16px;
+  user-select: none;
+}
+
+/* Footer */
+footer {
+  background-color: #A7BFA4;
+  padding: 8px 20px;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+
