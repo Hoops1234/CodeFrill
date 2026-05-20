@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFrill | User Profile</title>
+    <link rel="stylesheet" href="userprofile.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" onerror="console.log('Chart.js failed to load')"></script>
+    <script src="userprofile.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+<script>
+// On page load, check localStorage for dark mode
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const savedMode = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedMode === 'enabled' || (!savedMode && prefersDark)) {
+      document.body.classList.add('dark-mode');
+    }
+
+    // Initialize everything with real quiz data (with delay to ensure scripts are loaded)
+    setTimeout(() => {
+        try {
+            if (typeof initializePersonalStats === 'function') initializePersonalStats();
+            if (typeof initializeSkillTracking === 'function') initializeSkillTracking();
+            if (typeof initializeAccountActivity === 'function') initializeAccountActivity();
+        } catch (e) {
+            console.error('Error initializing stats:', e);
+        }
+    }, 100);
+
+    // Check if chart needs refresh after quiz completion
+    const shouldRefreshChart = localStorage.getItem('refreshChart') === 'true';
+    if (shouldRefreshChart) {
+        console.log('New quiz data detected, refreshing chart...');
+        localStorage.removeItem('refreshChart'); // Clear the flag
+    }
+
+    // Initialize chart after a longer delay to ensure DOM and Chart.js are ready
+    setTimeout(() => {
+        console.log('Initializing chart after page load...');
+        try {
+            if (typeof initializeProgressChart === 'function') initializeProgressChart();
+        } catch (e) {
+            console.error('Error initializing chart:', e);
+        }
+
+        // If new quiz data was detected, refresh again after initialization
+        if (shouldRefreshChart) {
+            setTimeout(() => {
+                console.log('Refreshing chart with new quiz data...');
+                try {
+                    if (typeof refreshProgressChart === 'function') refreshProgressChart();
+                } catch (e) {
+                    console.error('Error refreshing chart:', e);
+                }
+            }, 1000);
+        }
+    }, 500);
+  } catch (error) {
+    console.error('Error during initialization:', error);
+    alert('Error loading page: ' + error.message);
+  }
+});
+</script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <!-- Back button -->
+        <a href="index.html" class="back-btn">
+            <span class="material-symbols-outlined">
+arrow_back
+</span>
+        </a>
+        <div class="sidebar-header">
+            <img id="sidebarIcon" src="https://placehold.co/50x50/ffffff/000000?text=UD" alt="User Dashboard Icon" class="sidebar-icon">
+            <input type="file" id="sidebarIconInput" accept="image/*" style="display:none" />
+            <div id="sidebarIconDropdown" class="dropdown-menu hidden">
+                <button id="replaceImageBtn">Replace Image</button>
+                <button id="removeImageBtn">Remove Image</button>
+            </div>
+            <h1 class="sidebar-title">User Dashboard</h1>
+        </div>
+        <div class="sidebar-content">
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#profile" class="nav-link">User Profile</a></li>
+                    <li><a href="#progress" class="nav-link">Study Progress</a></li>
+                    <li><a href="#skills" class="nav-link">Skill Development</a></li>
+                </ul>
+            </nav>
+            <div class="logout-container">
+                <button id="logoutBtn" class="nav-link logout-btn">Logout</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile header for sidebar icon, user dashboard text, and logout -->
+    <header id="mobileHeader" class="mobile-header">
+        <div class="mobile-header-content">
+            <a href="index.html" class="mobile-back-btn">
+                <span class="material-symbols-outlined">
+                    arrow_back
+                </span>
+            </a>
+            <img id="mobileSidebarIcon" src="https://placehold.co/50x50/ffffff/000000?text=UD" alt="Sidebar Icon" class="sidebar-icon">
+            <input type="file" id="mobileSidebarIconInput" accept="image/*" style="display:none" />
+            <div id="mobileSidebarIconDropdown" class="dropdown-menu hidden">
+                <button id="mobileReplaceImageBtn">Replace Image</button>
+                <button id="mobileRemoveImageBtn">Remove Image</button>
+            </div>
+            <h1 class="sidebar-title">User Dashboard</h1>
+        </div>
+        <div class="nav-container">
+            <ul class="user-nav">
+                <li><a href="#profile" class="nav-link">User Profile</a></li>
+                <li><a href="#progress" class="nav-link">Study Progress</a></li>
+                <li><a href="#skills" class="nav-link">Skill Development</a></li>
+            </ul>
+        </div>
+        <button id="mobileLogoutBtn" class="mobile-logout-btn">Logout</button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- User Profile Section -->
+        <section id="profile" class="profile-section">
+            <div class="card">
+                <h3>Study Streak</h3>
+                <p class="stat-value text-blue" id="studyStreak">0</p>
+                <p class="stat-label">Days in a row</p>
+            </div>
+            <div class="card">
+                <h3>Study Sessions</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%"></div>
+                </div>
+                <p class="stat-label" id="studySessions">12 total sessions this month</p>
+            </div>
+            <div class="card">
+                <h3>Study Efficiency</h3>
+                <p class="stat-value text-green" id="studyEfficiency">85%</p>
+                <p class="stat-label">Average quiz score</p>
+            </div>
+        </section>
+
+        <!-- Study Progress Chart -->
+        <section id="progress" class="card progress-section">
+            <h3>Study Progress & Skill Improvement</h3>
+            <div class="chart-container">
+                <canvas id="progressChart" width="400" height="300"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="studyHoursChart" width="400" height="300"></canvas>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <p class="stat-label">Total Study Hours</p>
+                    <p class="stat-value text-blue" id="totalStudyHours">0h</p>
+                </div>
+                <div class="stat-box">
+                    <p class="stat-label">Average Score</p>
+                    <p class="stat-value text-green" id="averageScore">0%</p>
+                </div>
+                <div class="stat-box">
+                    <p class="stat-label">Quizzes Completed</p>
+                    <p class="stat-value text-purple" id="quizzesCompleted">0</p>
+                </div>
+                <div class="stat-box">
+                    <p class="stat-label">Study Efficiency</p>
+                    <p class="stat-value text-orange" id="studyEfficiency">0%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skill Development -->
+        <section id="skills" class="card skills-section">
+            <h3>Skill Development Map</h3>
+            <p>Programming skills based on quiz performance and study progress.</p>
+            <div class="skill-grid" id="skillContainer">
+                <div class="skill-item" data-skill="JavaScript">
+                    <div class="skill-badge skill-js">JS</div>
+                    <p class="skill-name">JavaScript</p>
+                    <p class="skill-level">Level <span class="js-level">1</span></p>
+                    <p class="skill-points"><span class="js-points">0</span> XP</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar js-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="skill-trend js-trend">📈 Stable</p>
+                    <p class="skill-improvement js-improvement">+0%</p>
+                </div>
+                <div class="skill-item" data-skill="HTML">
+                    <div class="skill-badge skill-html">HT</div>
+                    <p class="skill-name">HTML</p>
+                    <p class="skill-level">Level <span class="html-level">1</span></p>
+                    <p class="skill-points"><span class="html-points">0</span> XP</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar html-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="skill-trend html-trend">📈 Stable</p>
+                    <p class="skill-improvement html-improvement">+0%</p>
+                </div>
+                <div class="skill-item" data-skill="CSS">
+                    <div class="skill-badge skill-css">CS</div>
+                    <p class="skill-name">CSS</p>
+                    <p class="skill-level">Level <span class="css-level">1</span></p>
+                    <p class="skill-points"><span class="css-points">0</span> XP</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar css-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="skill-trend css-trend">📈 Stable</p>
+                    <p class="skill-improvement css-improvement">+0%</p>
+                </div>
+                <div class="skill-item" data-skill="Java">
+                    <div class="skill-badge skill-java">JV</div>
+                    <p class="skill-name">JAVA</p>
+                    <p class="skill-level">Level <span class="java-level">1</span></p>
+                    <p class="skill-points"><span class="java-points">0</span> XP</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar java-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="skill-trend java-trend">📈 Stable</p>
+                    <p class="skill-improvement java-improvement">+0%</p>
+                </div>
+                <div class="skill-item" data-skill="SQL">
+                    <div class="skill-badge skill-sql">SQ</div>
+                    <p class="skill-name">SQL</p>
+                    <p class="skill-level">Level <span class="sql-level">1</span></p>
+                    <p class="skill-points"><span class="sql-points">0</span> XP</p>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar sql-progress" style="width: 0%"></div>
+                    </div>
+                    <p class="skill-trend sql-trend">📈 Stable</p>
+                    <p class="skill-improvement sql-improvement">+0%</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

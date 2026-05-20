@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFrill | JavaScript</title>
+<link rel="stylesheet" href="jscode.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=book_4" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<script src="theme.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+     <a href="index.html">
+      <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+     </a> 
+      <h1>JAVASCRIPT</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <div class="for-button">
+        <button id="modBtn" onclick="showtext('module')">Module</button>
+        <button id="testBtn" onclick="showText('test')">Daily task</button>
+        <button id="disBtn" onclick="showtext('Discussion')">Discussion</button>
+      </div>
+    <main>
+
+
+        <div id="module" class="handout">
+          <div class="topic">
+            <div class="handouttopic">
+        
+          <h1>Introduction to JavaScript</h1>
+          <p>JavaScript is a versatile, high-level programming language that powers the interactive behavior of websites.
+           It works alongside HTML (structure) and CSS (style) to create dynamic, responsive web pages.</p>
+           
+           <ul>
+            <li>Client-side: Runs in the browser to handle user interactions.</li>
+            <li>Server-side: Runs on servers using Node.js.</li>
+            <li>Dynamically typed: Variable types are determined at runtime.</li>
+            <li>Interpreted: Executes code line by line.</li>
+            <li>Single-threaded: Handles one task at a time, but supports asynchronous operations.</li>
+           </ul>
+
+           <h3>Comment in JavaScript</h3>
+           <ul>
+            <li>Single-line: // This is a comment</li>
+            <li>Multi-line: <br>
+            /* This is a
+            multi-line comment */
+            </li>
+           </ul>
+           <p>Use comments to explain logic, organize code, or temporarily disable lines.</p>
+
+           <h3>Key Features of JavaScript</h3>
+           <ul>
+            <li>Client-side scripting: Fast response without server communication.</li>
+            <li>Event-driven: Reacts to user actions like clicks and typing.</li>
+            <li>Asynchronous: Handles tasks like data fetching without freezing the page.</li>
+            <li>Versatile: Used for simple scripts and complex applications.</li>
+            <li>Rich ecosystem: Includes frameworks like React, Angular, and Vue.js.</li>
+           </ul>
+
+           <h3>Programming Paradigms</h3>
+           <p><h4>JavaScript supports multiple styles:</h4></p>
+
+           <ul>
+            <li>Imperative: Step-by-step instructions.</li>
+            <li>Declarative: Describes what to do.</li>
+            <li>Object-Oriented: organizes software design around "objects" rather than functions or logic.</li>
+            <li>Functional: something that is designed to be practical, useful, and in working order</li>
+           </ul>
+
+           <h3>Limitations of JavaScript</h3>
+           <ul>
+            <li>Security risks: Vulnerable to XSS if not handled properly.</li>
+            <li>Performance: Slower than compiled languages for heavy tasks.</li>
+            <li>Complexity: Advanced features require deeper understanding.</li>
+           </ul>
+
+           <h3>ECMAScript Versions</h3>
+           <p>JavaScript evolves through ECMAScript standards.</p>
+
+        <h3>Real-World Applications</h3>
+        <ul>
+          <li>Form validation</li>
+          <li>Interactive games</li>
+          <li>Animations and effects</li>
+          <li>APIs and data fetching</li>
+          <li>Full-stack web apps</li>
+        </ul>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li>Use let and const instead of var.</li>
+          <li>Write clear, descriptive variable names.</li>
+          <li>Keep functions focused and reusable.</li>
+          <li>Comment only when necessary.</li>
+          <li>Use ES6+ features for cleaner code.</li>
+        </ul>
+
+        <h1>Introduction to Node.js</h1>
+        <h3>What Is Node.js?</h3>
+        <p>Node.js is a JavaScript runtime environment that allows you to run JavaScript <br> 
+          outside the browser, on your computer or server.</p>
+
+          <ul>
+            <li>Built on Chrome’s V8 engine</li>
+            <li>Enables server-side development using JavaScript</li>
+            <li>Comes with npm (Node Package Manager) for installing libraries</li>
+          </ul>
+          </div>
+        </div>
+        </div>
+
+
+        <div id="test" class="topic">
+         <div class="container2">
+<div class="daily-task-container">
+               <h2>Daily JavaScript Task</h2>
+              <div class="task-timer" id="taskTimer">
+                <div class="date-display">📅 <span id="currentDate"></span></div>
+                <div class="streak-display">🔥 Streak: <span id="streakCount">0</span> days</div>
+              </div>
+             <div class="score-display">
+               <span>Correct: <span id="correctCount">0</span></span>
+               <span>Wrong: <span id="wrongCount">0</span></span>
+               <span>Total: <span id="totalCount">0</span></span>
+             </div>
+             <div id="questionSection" class="question-section">
+               <h3>Today's Question:</h3>
+               <div class="question-header">
+                 <p id="questionText" class="question-text"></p>
+                 <span id="difficultyBadge" class="difficulty-badge"></span>
+               </div>
+                <div class="attempts-info">
+                 <div class="attempt-progress" id="attemptProgress"></div>
+                 <span>Attempts: <strong id="attemptCount">0/3</strong></span>
+               </div>
+               <div id="answerSection" class="answer-section">
+                 <textarea id="userAnswer" class="user-answer-input" placeholder="Type your answer here... (Press Ctrl+Enter to submit)"></textarea>
+                 <div class="keyboard-hint">💡 Tip: Press Ctrl+Enter to submit quickly</div>
+                 <div class="answer-buttons">
+                   <button id="submitAnswer" class="submit-btn">Submit Answer</button>
+                   <button id="clearAnswer" class="clear-btn">Clear</button>
+                 </div>
+               </div>
+             </div>
+             <div class="previous-answers">
+               <h3>Your Answers:</h3>
+               <div id="previousAnswers" class="answers-list"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+         
+        <div id="Discussion" class="video-section">
+          <h2>Discussion Videos</h2>
+          <div class="video-warning">
+            <p>Be ready to take down notes as there will be mini quizzes as the video goes on.</p>
+          </div>
+
+          <!-- Quiz Status Panel - JavaScript Quiz -->
+           <!-- Quiz Status Panel -->
+          <div class="quiz-status-panel">
+            <h4><i class="fas fa-clipboard-check"></i> Quiz Progress</h4>
+            <div id="quizStatusList" class="quiz-status-list"></div>
+            <button id="retakeQuizBtn" class="retake-quiz-btn" style="display: none;">Retake All Quizzes</button>
+          </div>
+
+          <!-- Floating Video Notes Panel -->
+          <div id="videoNotesPanel" class="video-notes-panel" style="display: none;">
+            <div class="video-notes-header">
+              <span>Quick Notes</span>
+              <button id="closeVideoNotes" class="close-video-notes">&times;</button>
+            </div>
+            <div id="videoNotesList" class="video-notes-list"></div>
+            <textarea id="videoNoteInput" class="video-note-input-field" placeholder="Type a note and press Enter..."></textarea>
+          </div>
+          <button id="toggleVideoNotes" class="toggle-video-notes" title="Take Notes">
+            <i class="fas fa-sticky-note"></i> Notes
+          </button>
+
+          <h4>JavaScript Introduction</h4>
+          <div class="video-container">
+            <video class="video-thumb" data-modal="videoModal" width="100%" height="auto">
+              <source src="Jstutoeial.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-modal" id="videoModal">
+            <div class="modal-content">
+              <video id="modalVideo" controls>
+                <source src="Jstutoeial.mp4" type="video/mp4">
+              </video>
+              <span class="close">&times;</span>
+            </div>
+          </div>
+
+          <!-- Quiz Modal for Video -->
+          <div class="quiz-modal" id="videoQuizModal">
+            <div class="quiz-modal-content">
+              <button id="closeQuizModal" class="close-quiz-modal">&times;</button>
+              <div id="quizCountdown" class="quiz-countdown">
+                <div id="fullscreenWarning" class="fullscreen-warning" style="display: none;">
+                
+                </div>
+                <h3>Quiz Coming Up!</h3>
+                <p>Get ready in <span id="countdownTimer">10</span> seconds</p>
+                <button id="skipCountdownBtn" class="skip-countdown-btn">Skip & Take Quiz</button>
+                <div class="quiz-notes-section">
+                  <label for="quizNoteInput">Notes from Video:</label>
+                  <div id="videoNotesDisplay" class="video-notes-display"></div>
+                  <textarea id="quizNoteInput" class="quiz-note-input" placeholder="Take more notes while waiting..."></textarea>
+                </div>
+              </div>
+<div id="quizContent" class="quiz-content" style="display: none;">
+                 <h3>Mini Quiz!</h3>
+                 <p id="quizQuestion"></p>
+                 <div id="quizOptions"></div>
+                 <p id="quizFeedback" class="quiz-feedback"></p>
+                 <div id="codeEditorSection" style="display: none;">
+                   <textarea id="codeEditor" class="code-editor-input" placeholder="Type your code answer here..." rows="4"></textarea>
+                   <div id="codeHints" class="code-hints"></div>
+                 </div>
+                 <button id="quizSubmitBtn" class="quiz-submit-btn">Submit Answer</button>
+               </div>
+            </div>
+          </div>
+        </div>
+
+       
+
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+       </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21
+    </footer>
+  </div>
+  <script src="jscode.js" defer></script>
+
+</body>
+</html>

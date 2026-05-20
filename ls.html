@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFrill | Login & Signup</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="ls.css">
+    <link rel="stylesheet" href="homepage.css">
+    <script src="theme.js"></script>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- Toggle Buttons -->
+            <div class="auth-toggle">
+                <button id="loginBtn" class="toggle-btn active" onclick="showForm('login')">Login</button>
+                <button id="signupBtn" class="toggle-btn" onclick="showForm('signup')">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Welcome Back!</h2>
+                <p class="form-subtitle">Login to continue your coding journey</p>
+                
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('loginPassword', this)"></i>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password" onclick="showForgotPassword()">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">Login</button>
+
+                <p class="form-footer">
+                    Don't have an account? 
+                    <a href="#" onclick="showForm('signup')">Sign Up</a>
+                </p>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form">
+                <h2>Create Account</h2>
+                <p class="form-subtitle">Join our coding community</p>
+
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signupName" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required minlength="6">
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('signupPassword', this)"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('signupConfirmPassword', this)"></i>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="terms-checkbox">
+                        <input type="checkbox" id="termsAccepted" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#" onclick="showTerms()">Terms of Service</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+
+                <p class="form-footer">
+                    Already have an account? 
+                    <a href="#" onclick="showForm('login')">Login</a>
+                </p>
+            </form>
+
+            <!-- Forgot Password Form -->
+            <form id="forgotPasswordForm" class="auth-form">
+                <h2>Reset Password</h2>
+                <p class="form-subtitle">Enter your email to reset your password</p>
+
+                <div class="form-group">
+                    <label for="forgotEmail">Email</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="forgotEmail" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">Send Reset Link</button>
+
+                <p class="form-footer">
+                    Remember your password? 
+                    <a href="#" onclick="showForm('login')">Login</a>
+                </p>
+            </form>
+
+            <!-- Terms Modal -->
+            <div id="termsModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeTerms()">&times;</span>
+                    <h2>Terms of Service</h2>
+                    <div class="terms-content">
+                        <h3>1. Acceptance of Terms</h3>
+                        <p>By accessing and using CodeFrill, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                        
+                        <h3>2. Use License</h3>
+                        <p>Permission is granted to temporarily use CodeFrill for personal, non-commercial use only.</p>
+                        
+                        <h3>3. Privacy Policy</h3>
+                        <p>Your privacy is important to us. We collect and use your information only as described in our Privacy Policy.</p>
+                        
+                        <h3>4. User Account</h3>
+                        <p>You are responsible for maintaining the confidentiality of your account and password.</p>
+                        
+                        <h3>5. Code of Conduct</h3>
+                        <p>You agree to use CodeFrill in a manner that is respectful and conducive to learning.</p>
+                    </div>
+                    <button class="auth-submit-btn" onclick="acceptTerms()">I Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ls.js"></script>
+</body>
+</html>

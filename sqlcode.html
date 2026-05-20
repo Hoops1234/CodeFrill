@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CodeFrill | SQL</title>
+<link rel="stylesheet" href="sqlcode.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=book_4" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_outward" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="theme.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+     <a href="index.html">
+      <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+     </a> 
+      <h1>SQL</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <div class="for-button">
+      <button id="modBtn" onclick="showtext('module')">Module</button>
+      <button id="testBtn" onclick="showText('test')">Daily task</button>
+      <button id="disBtn" onclick="showtext('Discussion')">Discussion</button>
+      </div>
+    <main>
+
+
+         <div id="module" class="handout">
+           <div class="topic">
+             <div class="handouttopic">
+         <h1>What Is SQL?</h1>
+          <p>SQL stands for Structured Query Language. It's the standard language for managing and manipulating relational databases. <br>
+          SQL allows you to create, read, update, and delete data stored in a database. <br>
+         Think of SQL like a translator between you and the database - you give commands in SQL, and the database understands exactly what to do. <br> <br>
+       <h4>queries, updates, inserts, deletes, and more.</h1></p>
+
+         <h1>How SQL Works</h1>
+         <p>SQL uses statements (commands) to perform operations on a database. These statements are written in a specific syntax: <br>
+         Most SQL statements follow this pattern: <br>
+         <ul>
+         <li>VERB - what action to take (SELECT, INSERT, UPDATE, DELETE)</li>
+         <li>OBJECT - what to act on (table, column names)</li>
+         <li>CLAUSE - additional conditions (WHERE, ORDER BY, GROUP BY)</li>
+         </ul>
+         <p>Everything follows a clear, readable structure.</p>
+         <br><br>
+
+         <h3>SELECT Statement</h3>
+         <p>The SELECT statement retrieves data from one or more tables.</p>
+         <p><code>SELECT column1, column2 FROM table_name;</code></p>
+         <p>Use <code>SELECT *</code> to retrieve all columns.</p>
+
+         <h3>SELECT DISTINCT</h3>
+         <p>Returns only distinct (different) values, eliminating duplicates.</p>
+         <p><code>SELECT DISTINCT column FROM table_name;</code></p>
+
+         <h3>WHERE Clause</h3>
+         <p>Filters records based on specific conditions.</p>
+         <p><code>SELECT * FROM table_name WHERE condition;</code></p>
+         <p>Example: <code>WHERE age > 18</code></p>
+
+         <h3>ORDER BY Clause</h3>
+         <p>Sorts the result set in ascending (ASC) or descending (DESC) order.</p>
+         <p><code>SELECT * FROM table_name ORDER BY column ASC;</code></p>
+
+         <h3>INSERT INTO Statement</h3>
+         <p>Adds new rows (records) to a table.</p>
+         <p><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></p>
+
+         <h3>UPDATE Statement</h3>
+         <p>Modifies existing records in a table.</p>
+         <p><code>UPDATE table_name SET column1 = value1 WHERE condition;</code></p>
+         <p><strong>Important:</strong> Always use WHERE with UPDATE to avoid changing all rows!</p>
+
+         <h3>DELETE Statement</h3>
+         <p>Removes records from a table.</p>
+         <p><code>DELETE FROM table_name WHERE condition;</code></p>
+         <p><strong>Important:</strong> Always use WHERE with DELETE to avoid removing all rows!</p>
+
+         <h3>LIMIT Clause</h3>
+         <p>Specifies the number of records to return (useful for large datasets).</p>
+         <p><code>SELECT * FROM table_name LIMIT 10;</code></p>
+
+         <h3>MIN and MAX Functions</h3>
+         <p>Returns the smallest (MIN) or largest (MAX) value in a column.</p>
+         <p><code>SELECT MIN(column) FROM table_name;</code></p>
+         <p><code>SELECT MAX(column) FROM table_name;</code></p>
+
+         <h3>COUNT Function</h3>
+         <p>Returns the number of rows that match a condition.</p>
+         <p><code>SELECT COUNT(column) FROM table_name;</code></p>
+         <p><code>SELECT COUNT(*) FROM table_name;</code> counts all rows</p>
+
+         <h3>AVG Function</h3>
+         <p>Returns the average value of a numeric column.</p>
+         <p><code>SELECT AVG(column) FROM table_name;</code></p>
+
+         <h3>SUM Function</h3>
+         <p>Returns the total sum of a numeric column.</p>
+         <p><code>SELECT SUM(column) FROM table_name;</code></p>
+
+         <h3>LIKE Operator</h3>
+         <p>Searches for a specified pattern in a column (wildcard searches).</p>
+         <p><code>SELECT * FROM table_name WHERE column LIKE 'pattern';</code></p>
+         <ul>
+           <li><code>%</code> - represents zero or more characters</li>
+           <li><code>_</code> - represents a single character</li>
+         </ul>
+         <p>Examples: <code>LIKE 'A%'</code> (starts with A), <code>LIKE '%@gmail.com'</code> (ends with @gmail.com)</p>
+
+         <h3>IN Operator</h3>
+         <p>Allows you to specify multiple values in a WHERE clause.</p>
+         <p><code>SELECT * FROM table_name WHERE column IN (value1, value2, value3);</code></p>
+
+         <h3>BETWEEN Operator</h3>
+         <p>Selects values within a given range (inclusive).</p>
+         <p><code>SELECT * FROM table_name WHERE column BETWEEN value1 AND value2;</code></p>
+
+         <h3>AND, OR, NOT Operators</h3>
+         <p>Combine multiple conditions in a WHERE clause:</p>
+         <ul>
+           <li><strong>AND</strong> - all conditions must be true</li>
+           <li><strong>OR</strong> - at least one condition must be true</li>
+           <li><strong>NOT</strong> - negates a condition</li>
+         </ul>
+
+         <h3>GROUP BY Statement</h3>
+         <p>Groups rows that have the same values into summary rows.</p>
+         <p><code>SELECT column, COUNT(*) FROM table_name GROUP BY column;</code></p>
+
+         <h3>HAVING Clause</h3>
+         <p>Filters groups after GROUP BY (similar to WHERE but for aggregated data).</p>
+         <p><code>SELECT column, COUNT(*) FROM table_name GROUP BY column HAVING COUNT(*) > 5;</code></p>
+
+         <h3>JOIN Operations</h3>
+         <p>Combines rows from two or more tables based on a related column:</p>
+         <ul>
+           <li><strong>INNER JOIN</strong> - returns only matching records from both tables</li>
+           <li><strong>LEFT JOIN</strong> - returns all records from left table + matching from right</li>
+           <li><strong>RIGHT JOIN</strong> - returns all records from right table + matching from left</li>
+           <li><strong>FULL JOIN</strong> - returns all records when there's a match in either table</li>
+         </ul>
+         <p>Example: <code>SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.id;</code></p>
+
+         <h3>UNION Operator</h3>
+         <p>Combines the result set of two or more SELECT statements (removes duplicates).</p>
+         <p><code>SELECT column FROM table1 UNION SELECT column FROM table2;</code></p>
+
+         <h3>UNIQUE Constraint</h3>
+         <p>Ensures all values in a column are different (no duplicates).</p>
+
+         <h3>Primary Key</h3>
+         <p>A column (or set of columns) that uniquely identifies each row in a table. Cannot be NULL and must be unique.</p>
+
+         <h3>Foreign Key</h3>
+         <p>A column that references the primary key of another table, creating a relationship between tables.</p>
+
+         <h3>CREATE TABLE Statement</h3>
+         <p>Creates a new table in the database with defined columns and constraints.</p>
+         <pre><code>CREATE TABLE table_name (
+   id INT PRIMARY KEY,
+   name VARCHAR(100) NOT NULL,
+   email VARCHAR(255) UNIQUE
+);</code></pre>
+
+         <h3>Data Types</h3>
+         <p>Common SQL data types:</p>
+         <ul>
+           <li><strong>INT / INTEGER</strong> - whole numbers</li>
+           <li><strong>VARCHAR(n)</strong> - variable-length string (max n characters)</li>
+           <li><strong>TEXT</strong> - long text strings</li>
+           <li><strong>DATE</strong> - date (YYYY-MM-DD)</li>
+           <li><strong>TIMESTAMP</strong> - date and time</li>
+           <li><strong>DECIMAL(p,s)</strong> - exact numeric with precision p and scale s</li>
+           <li><strong>BOOLEAN</strong> - true/false values</li>
+           <li><strong>BLOB</strong> - binary data (images, files)</li>
+         </ul>
+
+         <h3>ALTER TABLE Statement</h3>
+         <p>Modifies an existing table structure.</p>
+         <ul>
+           <li><code>ADD column</code> - adds a new column</li>
+           <li><code>DROP COLUMN</code> - removes a column</li>
+           <li><code>MODIFY COLUMN</code> - changes column data type</li>
+         </ul>
+
+         <h3>DROP TABLE Statement</h3>
+         <p>Deletes an entire table from the database (all data + structure).</p>
+         <p><code>DROP TABLE table_name;</code></p>
+
+         <h3>TRUNCATE TABLE Statement</h3>
+         <p>Removes all rows from a table but keeps the table structure intact (faster than DELETE).</p>
+         <p><code>TRUNCATE TABLE table_name;</code></p>
+
+         <h3>Indexes</h3>
+         <p>Database objects that speed up data retrieval operations on a table column.</p>
+         <p><code>CREATE INDEX index_name ON table_name (column);</code></p>
+
+         <h3>NULL Values</h3>
+         <p>NULL represents missing or unknown data. It is NOT the same as zero or empty string.</p>
+         <ul>
+           <li><code>IS NULL</code> - checks for NULL values</li>
+           <li><code>IS NOT NULL</code> - checks for non-NULL values</li>
+         </ul>
+
+         <h1>SQL Sub-languages (Categories)</h1>
+
+         <h3>DDL - Data Definition Language</h3>
+         <p>Commands that define and modify database structure:</p>
+         <ul>
+           <li>CREATE - creates new tables/database objects</li>
+           <li>ALTER - modifies existing structure</li>
+           <li>DROP - deletes tables/database objects</li>
+           <li>TRUNCATE - removes all rows from a table</li>
+         </ul>
+
+         <h3>DML - Data Manipulation Language</h3>
+         <p>Commands used to manage data within tables:</p>
+         <ul>
+           <li>SELECT - retrieves data</li>
+           <li>INSERT - adds new data</li>
+           <li>UPDATE - modifies existing data</li>
+           <li>DELETE - removes data</li>
+         </ul>
+
+         <h3>DCL - Data Control Language</h3>
+         <p>Commands that control access to data:</p>
+         <ul>
+           <li>GRANT - gives user access privileges</li>
+           <li>REVOKE - removes user access privileges</li>
+         </ul>
+
+         <h3>TCL - Transaction Control Language</h3>
+         <p>Commands that manage transactions (groups of operations as single unit):</p>
+         <ul>
+           <li>BEGIN / COMMIT - starts/ends a transaction</li>
+           <li>ROLLBACK - undoes changes in a transaction</li>
+           <li>SAVEPOINT - creates a point to roll back to</li>
+         </ul>
+
+         <h3>Best Practices</h3>
+         <ul>
+           <li>Always end SQL statements with a semicolon (;)</li>
+           <li>Use uppercase for SQL keywords (SELECT, FROM, WHERE)</li>
+           <li>Use lowercase or snake_case for table and column names</li>
+           <li>Always use WHERE with UPDATE and DELETE unless you mean to affect ALL rows</li>
+           <li>Use parameterized queries or prepared statements to prevent SQL injection</li>
+           <li>Limit query results when you don't need all records (use LIMIT)</li>
+           <li>Index columns used frequently in WHERE, JOIN, ORDER BY</li>
+           <li>Test queries on a small dataset first</li>
+           <li>Use meaningful table and column names</li>
+           <li>Document your database schema with comments</li>
+         </ul>
+
+         <h3>SQL Injection Prevention</h3>
+         <p>SQL Injection is a security vulnerability where malicious SQL is inserted into queries:</p>
+         <ul>
+           <li><strong>Use Parameterized Queries / Prepared Statements</strong> - separates code from data</li>
+           <li><strong>Validate Input</strong> - check data types, lengths, and formats</li>
+           <li><strong>Least Privilege Principle</strong> - database users should have only necessary permissions</li>
+         </ul>
+
+         <h3>Real-World SQL Use Cases</h3>
+         <ul>
+           <li>E-commerce: product search, order history, inventory management</li>
+           <li>Analytics: sales reports, user behavior analysis, business intelligence</li>
+           <li>Web Apps: user authentication, content management, data storage</li>
+           <li>Finance: transaction records, account management, fraud detection</li>
+         </ul>
+      </div>
+    </div>
+
+<div id="test" class="topic">
+        <div class="container2">
+           <div class="daily-task-container">
+             <h2>Daily SQL Task</h2>
+             <div class="task-timer" id="taskTimer">
+                <div class="date-display">📅 <span id="currentDate"></span></div>
+                <div class="streak-display">🔥 Streak: <span id="streakCount">0</span> days</div>
+              </div>
+            <div class="score-display">
+              <span>Correct: <span id="correctCount">0</span></span>
+              <span>Wrong: <span id="wrongCount">0</span></span>
+              <span>Total: <span id="totalCount">0</span></span>
+            </div>
+             <div id="questionSection" class="question-section">
+               <h3>Today's Question:</h3>
+               <div class="question-header">
+                 <p id="questionText" class="question-text"></p>
+                 <span id="difficultyBadge" class="difficulty-badge"></span>
+               </div>
+               <div class="attempts-info">
+                 <div class="attempt-progress" id="attemptProgress"></div>
+                 <span>Attempts: <strong id="attemptCount">0/3</strong></span>
+               </div>
+               <div id="answerSection" class="answer-section">
+                 <textarea id="userAnswer" class="user-answer-input" placeholder="Type your answer here... (Press Ctrl+Enter to submit)"></textarea>
+                 <div class="keyboard-hint">💡 Tip: Press Ctrl+Enter to submit quickly</div>
+                 <div class="answer-buttons">
+                   <button id="submitAnswer" class="submit-btn">Submit Answer</button>
+                   <button id="clearAnswer" class="clear-btn">Clear</button>
+                 </div>
+               </div>
+             </div>
+            <div class="previous-answers">
+              <h3>Your Answers:</h3>
+              <div id="previousAnswers" class="answers-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+         
+        <div id="Discussion" class="video-section">
+          <h2>Discussion Videos</h2>
+          <div class="video-warning">
+            <p>Be ready to take down notes as there will be mini quizzes as the video goes on.</p>
+          </div>
+
+          <!-- Quiz Status Panel -->
+          <div class="quiz-status-panel">
+            <h4><i class="fas fa-clipboard-check"></i> Quiz Progress</h4>
+            <div id="quizStatusList" class="quiz-status-list"></div>
+            <button id="retakeQuizBtn" class="retake-quiz-btn" style="display: none;">Retake All Quizzes</button>
+          </div>
+
+          <!-- Floating Video Notes Panel -->
+          <div id="videoNotesPanel" class="video-notes-panel" style="display: none;">
+            <div class="video-notes-header">
+              <span>Quick Notes</span>
+              <button id="closeVideoNotes" class="close-video-notes">&times;</button>
+            </div>
+            <div id="videoNotesList" class="video-notes-list"></div>
+            <textarea id="videoNoteInput" class="video-note-input-field" placeholder="Type a note and press Enter..."></textarea>
+          </div>
+          <button id="toggleVideoNotes" class="toggle-video-notes" title="Take Notes">
+            <i class="fas fa-sticky-note"></i> Notes
+          </button>
+          
+<h4>SQL Basics</h4>
+           <div class="video-container">
+             <video class="video-thumb" data-modal="videoModal2" width="100%" height="auto">
+               <source src="CrushkosiR.mp4" type="video/mp4">
+               Your browser does not support the video tag.
+             </video>
+           </div>
+           <div class="video-modal" id="videoModal2">
+             <div class="modal-content">
+               <video id="modalVideo2" controls>
+                 <source src="CrushkosiR.mp4" type="video/mp4">
+               </video>
+               <span class="close2">&times;</span>
+             </div>
+           </div>
+
+
+          <!-- Quiz Modal for Video -->
+          <div class="quiz-modal" id="videoQuizModal">
+            <div class="quiz-modal-content">
+              <button id="closeQuizModal" class="close-quiz-modal">&times;</button>
+              <div id="quizCountdown" class="quiz-countdown">
+                <div id="fullscreenWarning" class="fullscreen-warning" style="display: none;">
+                
+                </div>
+                <h3>Quiz Coming Up!</h3>
+                <p>Get ready in <span id="countdownTimer">10</span> seconds</p>
+                <button id="skipCountdownBtn" class="skip-countdown-btn">Skip & Take Quiz</button>
+                <div class="quiz-notes-section">
+                  <label for="quizNoteInput">Notes from Video:</label>
+                  <div id="videoNotesDisplay" class="video-notes-display"></div>
+                  <textarea id="quizNoteInput" class="quiz-note-input" placeholder="Take more notes while waiting..."></textarea>
+                </div>
+              </div>
+              <div id="quizContent" class="quiz-content" style="display: none;">
+                <h3>Mini Quiz!</h3>
+                <p id="quizQuestion"></p>
+                <div id="quizOptions"></div>
+                <div id="codeEditorSection" class="code-editor-section" style="display: none;">
+                  <label for="codeEditor">Write your SQL code:</label>
+                  <textarea id="codeEditor" class="code-editor" placeholder="Type your SQL code here..."></textarea>
+                  <div id="codeHints" class="code-hints"></div>
+                </div>
+                <p id="quizFeedback" class="quiz-feedback"></p>
+                <button id="quizSubmitBtn" class="quiz-submit-btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+       </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21 | SQL Learning
+    </footer>
+  </div>
+<script src="sqlcode.js" defer></script>
+
+</body>
+</html>

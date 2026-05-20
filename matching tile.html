@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flip Tile Matching Game</title>
+  <style>
+    :root {
+      --primary-color: #A7BFA4;
+      --white-color: #F5F5F3;
+      --dark-color: #2E2E2E;
+      --secondary-color: #343a40;
+      --alice-color: #F0F8FF;
+    }
+
+    .matching {
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Stack Layout for Mobile Views */
+    .stacklayout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Tablet Landscape */
+    .tile { background: #2c3e50; color: var(--alice-color); }
+    .flipped { background: #f1c40f; }
+    #popup { background: var(--dark-color); color: var(--white-color); }
+    #game-board {
+      display: grid;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+      margin: 20px auto;
+      max-width: 90vw;
+    }
+    .tile {
+      width: 100px; height: 100px;
+      background: #2c3e50; color: var(--alice-color);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 14px; border-radius: 8px;
+      transition: background 0.3s;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    .flipped { background: #f1c40f; color: black; font-size: 14px; word-wrap: break-word; text-align: center; line-height: 1.2; }
+    .matched { background: #00ff22; cursor: default; }
+    #controls { margin: 20px; }
+    #popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); padding: 20px; border: 1px solid rgba(0,0,0,0.2); border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1000; transition: background-color 0.3s ease, color 0.3s ease; }
+    #popup h2 { font-size: 2.5em; font-weight: bold; color: #ff4500; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    #popup p { font-size: 1.5em; font-weight: bold; color: #000; }
+    #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+    .confetti {
+      position: fixed;
+      font-size: 20px;
+      animation: explode 2s ease-out forwards;
+      z-index: 1001;
+      user-select: none;
+    }
+    @keyframes explode {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="matching">
+  <audio id="wowSound" src="sfx/Wow sound effect.mp3" preload="auto"></audio>
+  <h1>Flip Tile Matching Game</h1>
+  <div id="score">Tries: 0</div>
+  <div id="timer">Time: 0s</div>
+  <div id="controls">
+    <label for="set-selector">Choose Set:</label>
+    <select id="set-selector">
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="java">Java</option>
+      <option value="javascript">JavaScript</option>
+    </select>
+
+    <label for="grid-size">Grid Size:</label>
+    <select id="grid-size">
+      <option value="2">2x2</option>
+      <option value="4">4x4</option>
+      <option value="6">6x6</option>
+    </select>
+
+    <button onclick="startGame()">Start Game</button>
+  </div>
+
+  <div id="game-board"></div>
+
+  <div id="overlay"></div>
+  <div id="popup">
+    <h2>Game Over!</h2>
+    <p id="final-score"></p>
+    <button onclick="startGame()">Retry</button>
+  </div>
+</div>
+
+  <script>
+    const sets = {
+      html: [
+        "<p>", "<h1>", "<a>", "<img>", "<ul>", "<ol>", "<li>", "<table>",
+        "<tr>", "<td>", "<form>", "<input>", "<button>", "<div>", "<span>", "<br>",
+        "<meta>", "<title>"
+      ],
+      css: [
+        "color", "background-color", "font-size", "font-family", "margin", "padding", "border", "width",
+        "height", "display", "position", "z-index", "flex", "grid", "overflow", "opacity",
+        "transition", "transform"
+      ],
+      java: [
+        "class", "public static void main", "int", "String", "System.out.println", "boolean", "for loop", "while loop",
+        "if", "else", "try", "catch", "ArrayList", "HashMap", "extends", "implements",
+        "this", "super"
+      ],
+      javascript: [
+        "let", "const", "var", "function", "=>", "document.getElementById", "querySelector", "addEventListener",
+        "console.log", "JSON.parse", "JSON.stringify", "setTimeout", "setInterval", "map()", "filter()", "reduce()",
+        "Promise", "async/await"
+      ]
+    };
+
+    const logoMap = {
+      html: 'HTML Logo.png',
+      css: 'CSS Logo.png',
+      java: 'JAVA Logo.png',
+      javascript: 'JS Logo.png'
+    };
+
+    const darkLogoMap = {
+      html: 'HTML BLACK.png',
+      css: 'CSS BLACK.png',
+      java: 'JAVA BLACK.png',
+      javascript: 'JS BLACK.png'
+    };
+
+    let firstTile = null;
+    let lockBoard = false;
+    let tries = 0;
+    let timer = 0;
+    let timerInterval;
+
+    // Set theme based on dark mode parameter
+    const isDark = new URLSearchParams(window.location.search).get('dark') === '1';
+    if (isDark) {
+      document.body.style.background = 'linear-gradient(135deg, var(--dark-color) 0%, #1a1a1a 100%)';
+      document.body.style.color = 'var(--white-color)';
+    } else {
+      document.body.style.background = 'linear-gradient(135deg, var(--white-color) 0%, #e0e0e0 100%)';
+      document.body.style.color = 'var(--dark-color)';
+    }
+
+    function startGame() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+      const board = document.getElementById("game-board");
+      board.innerHTML = "";
+      tries = 0;
+      timer = 0;
+      document.getElementById("score").innerText = "Tries: 0";
+      document.getElementById("timer").innerText = "Time: 0s";
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timer++;
+        const minutes = Math.floor(timer / 60);
+        const seconds = timer % 60;
+        document.getElementById("timer").innerText = "Time: " + (minutes > 0 ? minutes + "m " : "") + seconds + "s";
+      }, 1000);
+
+      const selectedSet = sets[document.getElementById("set-selector").value];
+      const gridSize = parseInt(document.getElementById("grid-size").value);
+      const totalTiles = gridSize * gridSize;
+
+      // Calculate dynamic tile size: larger for fewer tiles
+      const baseSize = gridSize <= 2 ? 120 : gridSize <= 4 ? 100 : 80;
+      const tileSize = Math.min(baseSize, Math.floor((window.innerWidth * 0.8) / gridSize));
+
+      // Adjust grid dynamically
+      board.style.gridTemplateColumns = `repeat(${gridSize}, ${tileSize}px)`;
+
+      // Pick enough pairs to fill the grid (half of totalTiles)
+      let pairsNeeded = Math.floor(totalTiles / 2);
+      let chosenPairs = selectedSet.slice(0, pairsNeeded);
+
+      const isDark = new URLSearchParams(window.location.search).get('dark') === '1';
+      const selectedMap = isDark ? darkLogoMap : logoMap;
+      const logo = selectedMap[document.getElementById("set-selector").value];
+      const initialHTML = `<img src="img/${logo}" alt="${document.getElementById("set-selector").value}" style="width: 100%; height: 100%; border-radius: 8px; object-fit: cover;">`;
+
+      let tiles = [];
+      chosenPairs.forEach(pair => {
+        tiles.push({ text: pair, id: pair, initialHTML: initialHTML });
+        tiles.push({ text: pair, id: pair, initialHTML: initialHTML });
+      });
+
+      // Shuffle tiles
+      tiles = tiles.sort(() => Math.random() - 0.5);
+
+      // Render tiles
+      tiles.forEach(tile => {
+        const div = document.createElement("div");
+        div.className = "tile";
+        div.dataset.id = tile.id;
+        div.innerHTML = tile.initialHTML;
+        div.style.width = `${tileSize}px`;
+        div.style.height = `${tileSize}px`;
+        div.style.fontSize = `${Math.min(14, tileSize / 7)}px`;
+        div.addEventListener("click", () => flipTile(div, tile));
+        board.appendChild(div);
+      });
+    }
+
+    function flipTile(tile, tileData) {
+      if (lockBoard || tile.classList.contains("flipped") || tile.classList.contains("matched")) return;
+      tile.classList.add("flipped");
+      tile.innerHTML = tileData.text.replace(/</g, '').replace(/>/g, '');
+
+      if (!firstTile) {
+        firstTile = tile;
+      } else {
+        tries++;
+        document.getElementById("score").innerText = "Tries: " + tries;
+        if (firstTile.dataset.id === tile.dataset.id && firstTile !== tile) {
+          // Correct match: keep flipped
+          firstTile.classList.add("matched");
+          tile.classList.add("matched");
+          firstTile = null;
+          // Check if all tiles are matched
+          const allTiles = document.querySelectorAll(".tile");
+          const matchedTiles = document.querySelectorAll(".matched");
+          if (allTiles.length === matchedTiles.length) {
+            // Game over
+            clearInterval(timerInterval);
+            const setName = document.getElementById("set-selector").value;
+            const gridSize = document.getElementById("grid-size").value;
+            saveRecord(setName, gridSize, timer, tries);
+            const minutes = Math.floor(timer / 60);
+            const seconds = timer % 60;
+            const timeString = minutes > 0 ? minutes + "m " + seconds + "s" : seconds + "s";
+            document.getElementById("final-score").innerText = "Final Score: " + tries + " tries in " + timeString;
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+            launchConfetti();
+            // Play wow SFX
+            document.getElementById('wowSound').play();
+          }
+        } else {
+          // Wrong match: flip back after delay
+          lockBoard = true;
+          setTimeout(() => {
+            firstTile.classList.remove("flipped");
+            firstTile.innerHTML = tileData.initialHTML;
+            tile.classList.remove("flipped");
+            tile.innerHTML = tileData.initialHTML;
+            lockBoard = false;
+            firstTile = null;
+          }, 1000);
+        }
+      }
+    }
+
+    function saveRecord(setName, gridSize, time, tries) {
+      const records = JSON.parse(localStorage.getItem('matchingTileRecords') || '{}');
+      const key = `${setName}_${gridSize}`;
+      if (!records[key]) records[key] = [];
+      records[key].push({ time, tries, date: new Date().toISOString() });
+      // Keep only top 10 records per category, sorted by time ascending
+      records[key] = records[key].sort((a, b) => a.time - b.time).slice(0, 10);
+      localStorage.setItem('matchingTileRecords', JSON.stringify(records));
+    }
+
+    function launchConfetti() {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const emojis = tries <= 10 ? ['🎉', '🎊', '✨', '🌟', '💫'] : tries <= 20 ? ['👍', '👏', '🙌', '🤝', '💪'] : ['😊', '🙂', '😐', '😕', '😞'];
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        const angle = (Math.PI * 2 * i) / 50;
+        const distance = Math.random() * 300 + 100;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        confetti.style.left = centerX + "px";
+        confetti.style.top = centerY + "px";
+        confetti.style.setProperty('--tx', tx + 'px');
+        confetti.style.setProperty('--ty', ty + 'px');
+        confetti.style.animationDelay = Math.random() * 0.5 + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 2500);
+      }
+    }
+  </script>
+</body>
+</html>
