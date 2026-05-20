@@ -1,0 +1,235 @@
+/* Toggle Button for Code Editor */
+.toggle-code-editor-btn {
+  background-color: #2D5A27;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  margin-bottom: 10px;
+}
+
+.toggle-code-editor-btn:hover {
+  background-color: #1e3d1a;
+}
+
+.toggle-code-editor-btn.active {
+  background-color: #1e3d1a;
+}
+
+.toggle-code-editor-btn i {
+  font-size: 16px;
+}
+
+.code-editor-content {
+  display: none;
+}
+
+.code-editor-content.show {
+  display: block;
+}
+
+/* Dark mode for toggle button */
+body.dark-mode .toggle-code-editor-btn {
+  background-color: #A7BFA4;
+  color: #1a1a1a;
+}
+
+body.dark-mode .toggle-code-editor-btn:hover {
+  background-color: #8fa88b;
+}
+
+body.dark-mode .toggle-code-editor-btn.active {
+  background-color: #8fa88b;
+}
+
+/* Code Editor Section for Quiz Modal */
+.code-editor-section {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.code-editor-section label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.code-editor {
+  width: 100%;
+  height: 200px;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+}
+
+.code-editor:focus {
+  outline: none;
+  border-color: #2D5A27;
+}
+
+.code-preview {
+  width: 100%;
+  height: 150px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.preview-header {
+  background-color: #f5f5f5;
+  padding: 8px 15px;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-frame {
+  width: 100%;
+  height: calc(100% - 40px);
+  border: none;
+}
+
+.run-code-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.run-code-btn:hover {
+  background-color: #45a049;
+}
+
+/* Dark mode for code editor */
+body.dark-mode .code-editor {
+  background-color: #333;
+  color: #f0f0f0;
+  border-color: #555;
+}
+
+body.dark-mode .code-editor:focus {
+  border-color: #A7BFA4;
+}
+
+body.dark-mode .code-editor-section label {
+  color: #f0f0f0;
+}
+
+body.dark-mode .preview-header {
+  background-color: #444;
+  color: #f0f0f0;
+  border-color: #555;
+}
+
+body.dark-mode .code-preview {
+  background-color: #222;
+  border-color: #555;
+}
+
+/* Required code editor - visual feedback */
+.code-editor.required {
+  border-color: #DC2626;
+  border-width: 3px;
+}
+
+.code-editor.required-empty {
+  border-color: #DC2626;
+  border-width: 3px;
+  background-color: #FEF2F2;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+body.dark-mode .code-editor.required-empty {
+  background-color: #2a1a1a;
+}
+
+/* Code editor header row */
+.code-editor-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background-color: #2D5A27;
+  color: white;
+  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.code-editor-header-row i {
+  font-size: 18px;
+}
+
+.code-editor-instruction {
+  padding: 10px 15px;
+  background-color: #FFF3CD;
+  border-left: 4px solid #FFC107;
+  margin: 0;
+  font-size: 13px;
+  color: #856404;
+}
+
+body.dark-mode .code-editor-header-row {
+  background-color: #4a6b4a;
+}
+
+body.dark-mode .code-editor-instruction {
+  background-color: #3d3514;
+  border-left-color: #FFC107;
+  color: #e0c46a;
+}
+
+/* Quiz status panel styles */
+.quiz-status-panel {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.quiz-status-panel h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+body.dark-mode .quiz-status-panel {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+body.dark-mode .quiz-status-panel h4 {
+  color: #f0f0f0;
+}
+

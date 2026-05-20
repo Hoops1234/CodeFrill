@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFrill | HTML</title>
+<link rel="stylesheet" href="csscode.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=book_4" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_outward" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="theme.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+     <a href="index.html">
+      <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+     </a> 
+      <h1>CSS</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <div class="for-button">
+        <button id="modBtn" onclick="showtext('module')">Module</button>
+        <button id="testBtn" onclick="showText('test')">Daily task</button>
+        <button id="disBtn" onclick="showtext('Discussion')">Discussion</button>
+      </div>
+    <main>
+
+
+        <div id="module" class="handout">
+          <div class="topic">
+            <div class="handouttopic">
+        <h1>What is CSS?</h1>
+        <ul>
+          <li>CSS = Cascading Style Sheets</li>
+          <li>A language designed to simplify the process of making web pages presentable.</li>
+          <li>It allows you to apply colors, fonts, spacing, positioning, and layout to HTML documents.</li>
+          <li>HTML uses tags, while CSS uses rule sets.</li>
+          <li>CSS styles are applied to HTML elements using selectors.</li>
+        </ul>
+
+        <h1> Main Advantages</h1>
+        <ul>
+          <li>Separation of content and style → HTML handles structure, CSS handles design.</li>
+          <li>Reusable rules → the same CSS file can style multiple pages.</li>
+          <li>Cleaner code → easier to maintain and update.</li>
+        </ul>
+
+        <h3> Why CSS?</h3>
+        <ul>
+          <li>Saves Time → write once, reuse everywhere.</li>
+          <li>Easy Maintenance → change one CSS file, update the whole site.</li>
+          <li>Search Engine Friendly → clean, structured code improves readability.</li>
+          <li>Superior Styles → more styling options than HTML alone.</li>
+          <li>Offline Browsing → CSS can be cached for offline use.</li>
+        </ul>
+
+        <h3> CSS Syntax</h3>
+        <p>A CSS rule set consists of:</p>
+        <ul>
+          <li>Selector → targets the HTML element.</li>
+          <li>Declaration Block → contains one or more 
+            property-value pairs.
+          </li>
+          <li>Selector: h1 → targets all "h1" elements.</li>
+          <li>Declarations: { color: blue; font-size: 12px; }</li>
+          <li>Each declaration = property: value;</li>
+        </ul>
+
+        <h3>What is Cascading?</h3>
+        <p>The “C” in CSS stands for Cascading.</p>
+       <ul><li>When multiple rules apply to the same element, the browser decides which one to use.</li>
+            <li>Priority order: 
+            Inline styles (highest priority)
+            </li>
+      </ul>
+
+        <h3>Advantages of CSS</h3>6
+        <ul>
+          <li>Simplifies web design and maintenance.</li>
+          <li>Enhances website performance and user experience.</li>
+          <li>Supports responsive design for all devices.</li>
+          <li>Provides flexibility with layouts (Flexbox, Grid).</li>
+          <li>Improves SEO and accessibility.</li>
+        </ul>
+
+        <h3>CSS Rule Set: The Basics</h3>
+        <p>CSS is written as a rule set, which consists of:</p>
+        <ul>
+          <li>Selector → the HTML element(s) you want to style.</li>
+          <li>Declaration Block { } → contains one or more style rules.</li>
+        </ul>
+
+        <h3>CSS Selectors</h3>
+        <p>Selectors define which HTML elements will be styled.</p>
+        <ul>
+          <li>Universal Selector</li>
+          <li>Type Selector</li>
+          <li>Class Selector</li>
+          <li>ID Selector</li>
+        </ul>
+
+         <h3>Universal Selector</h3>
+         <p>Applies styles to all elements.</p>
+
+         <p>
+          * { <br>
+             margin: 0; <br>
+              padding: 0; <br>
+          }
+         </p>
+
+         <h3>Type Selector</h3>
+         <p>Targets a specific HTML tag.</p>
+
+         <p>h1 { <br>
+          font-family: Arial, sans-serif;
+         }
+        </p>
+
+         <h3>Class Selector</h3>
+         <p>Targets elements with a specific class attribute.</p>
+
+         <p>.box { <br>
+           border: 1px solid black; <br> padding: 10px; <br> }
+        </p>
+
+         <h3>ID Selector</h3>
+         <p>Targets a single element with a unique id.</p>
+         <p>#header { <br>
+    background-color: lightgray; <br>
+}
+</p>
+          </div>
+        </div>
+        </div>
+
+         <div id="test" class="topic">
+         <div class="container2">
+            <div class="daily-task-container">
+              <h2>Daily CSS Task</h2>
+              <div class="task-timer" id="taskTimer">
+                <div class="date-display">📅 <span id="currentDate"></span></div>
+                <div class="streak-display">🔥 Streak: <span id="streakCount">0</span> days</div>
+              </div>
+             <div class="score-display">
+               <span>Correct: <span id="correctCount">0</span></span>
+               <span>Wrong: <span id="wrongCount">0</span></span>
+               <span>Total: <span id="totalCount">0</span></span>
+             </div>
+             <div id="questionSection" class="question-section">
+               <h3>Today's Question:</h3>
+               <div class="question-header">
+                 <p id="questionText" class="question-text"></p>
+                 <span id="difficultyBadge" class="difficulty-badge"></span>
+               </div>
+                <div class="attempts-info">
+                 <div class="attempt-progress" id="attemptProgress"></div>
+                 <span>Attempts: <strong id="attemptCount">0/3</strong></span>
+               </div>
+               <div id="answerSection" class="answer-section">
+                 <textarea id="userAnswer" class="user-answer-input" placeholder="Type your answer here... (Press Ctrl+Enter to submit)"></textarea>
+                 <div class="keyboard-hint">💡 Tip: Press Ctrl+Enter to submit quickly</div>
+                 <div class="answer-buttons">
+                   <button id="submitAnswer" class="submit-btn">Submit Answer</button>
+                   <button id="clearAnswer" class="clear-btn">Clear</button>
+                 </div>
+               </div>
+             </div>
+             <div class="previous-answers">
+               <h3>Your Answers:</h3>
+               <div id="previousAnswers" class="answers-list"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+         
+        <div id="Discussion" class="video-section">
+          <h2>Discussion Videos</h2>
+          <div class="video-warning">
+            <p>Be ready to take down notes as there will be mini quizzes as the video goes on.</p>
+          </div>
+
+          <!-- Quiz Status Panel -->
+          <div class="quiz-status-panel">
+            <h4><i class="fas fa-clipboard-check"></i> Quiz Progress</h4>
+            <div id="quizStatusList" class="quiz-status-list"></div>
+            <button id="retakeQuizBtn" class="retake-quiz-btn" style="display: none;">Retake All Quizzes</button>
+          </div>
+
+          <!-- Floating Video Notes Panel -->
+          <div id="videoNotesPanel" class="video-notes-panel" style="display: none;">
+            <div class="video-notes-header">
+              <span>Quick Notes</span>
+              <button id="closeVideoNotes" class="close-video-notes">&times;</button>
+            </div>
+            <div id="videoNotesList" class="video-notes-list"></div>
+            <textarea id="videoNoteInput" class="video-note-input-field" placeholder="Type a note and press Enter..."></textarea>
+          </div>
+          <button id="toggleVideoNotes" class="toggle-video-notes" title="Take Notes">
+            <i class="fas fa-sticky-note"></i> Notes
+          </button>
+          
+          <h4>CSS</h4>
+          <div class="video-container">
+            <video class="video-thumb" data-modal="videoModal2" width="100%" height="auto">
+              <source src="CSSriri (edited video).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-modal" id="videoModal2">
+            <div class="modal-content">
+              <video id="modalVideo2" controls>
+                <source src="CSSriri (edited video).mp4" type="video/mp4">
+              </video>
+              <span class="close2">&times;</span>
+            </div>
+          </div>
+
+
+          <!-- Quiz Modal for Video -->
+          <div class="quiz-modal" id="videoQuizModal">
+            <div class="quiz-modal-content">
+              <button id="closeQuizModal" class="close-quiz-modal">&times;</button>
+              <div id="quizCountdown" class="quiz-countdown">
+                <div id="fullscreenWarning" class="fullscreen-warning" style="display: none;">
+                
+                </div>
+                <h3>Quiz Coming Up!</h3>
+                <p>Get ready in <span id="countdownTimer">10</span> seconds</p>
+                <button id="skipCountdownBtn" class="skip-countdown-btn">Skip & Take Quiz</button>
+                <div class="quiz-notes-section">
+                  <label for="quizNoteInput">Notes from Video:</label>
+                  <div id="videoNotesDisplay" class="video-notes-display"></div>
+                  <textarea id="quizNoteInput" class="quiz-note-input" placeholder="Take more notes while waiting..."></textarea>
+                </div>
+              </div>
+              <div id="quizContent" class="quiz-content" style="display: none;">
+                <h3>Mini Quiz!</h3>
+                <p id="quizQuestion"></p>
+                <div id="quizOptions"></div>
+                <div id="codeEditorSection" class="code-editor-section" style="display: none;">
+                  <label for="codeEditor">Write your CSS code:</label>
+                  <textarea id="codeEditor" class="code-editor" placeholder="Type your HTML code here..."></textarea>
+                  <div id="codeHints" class="code-hints"></div>
+                </div>
+                <p id="quizFeedback" class="quiz-feedback"></p>
+                <button id="quizSubmitBtn" class="quiz-submit-btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+       </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21
+    </footer>
+  </div>
+  <script src="dailyTask.js" defer></script>
+  <script src="csscode.js" defer></script>
+
+</body>
+</html>
