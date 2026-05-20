@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFrill | HTML</title>
+<link rel="stylesheet" href="javacode.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=book_4" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_outward" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="theme.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+     <a href="index.html">
+      <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+     </a> 
+      <h1>Java</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <div class="for-button">
+        <button id="modBtn" onclick="showtext('module')">Module</button>
+          <button id="testBtn" onclick="showText('test')">Daily task</button>
+        <button id="disBtn" onclick="showtext('Discussion')">Discussion</button>
+      </div>
+    <main>
+
+
+        <div id="module" class="handout">
+          <div class="topic">
+            <div class="handouttopic">
+        <h1>What Is Java?</h1>
+         <p>Java is a widely-used, high-level, object-oriented programming language and computing <br>
+          released by Sun Microsystems in 1995. It is designed to be platform-independent, <br>
+        enabling developers to "write once, run anywhere" (WORA), meaning compiled  <br> 
+        Java code runs on any device equipped with a Java Virtual Machine</p>
+
+        <h1>Why Learn Java?</h1>
+        <ul>
+          <li>Used in Android apps, web applications, enterprise systems, games, and
+            cloud applications.</li>
+            <li>Easy to learn for beginners but powerful enough for professionals. </li>
+        </ul>
+        <br><br>
+
+        <h3>Environment Variables:</h3>
+        <ul>
+          <li>PATH → Lets you run Java commands (javac, java) from anywhere.</li>
+          <li>JAVA_HOME → Points to the folder where Java is installed.</li>
+        </ul>
+
+        <h3>Java Basics</h3>
+        <p>Every Java program is built using classes, methods, and statements.</p>
+
+        <h3>Example: Hello World Program</h3>
+        <h4>public class HelloWorld{ <br>
+          public static void main(String[] args) { <br>
+            System.out.println("Hello, World"); <br>
+          } <br>
+        }
+        </h4>
+
+        <h3>Explanation:</h3>
+        <ul>
+          <li>public class HelloWorld → Defines a class named HelloWorld.</li>
+          <li>public static void main(String[] args) → Entry point of the program.</li>
+          <li>System.out.println("Hello, World"); → Prints text to the console.</li>
+        </ul>
+
+        <h3>Comments in Java</h3>
+        <p>Comments are notes in the code. They are ignored by the compiler.</p>
+
+        <h4>Types of Comments:</h4>
+        <ul>
+          <li>Single-line → // This is a comment</li>
+          <li>Multi-line → /* This is a multi-line comment */</li>
+          <li>Documentation (Javadoc) → /** This is a documentation comment */</li>
+        </ul>
+
+        <h3>Data Types in Java</h3>
+        <p>Data types define the kind of values a variable can hold.</p>
+
+        <h3>Categories:</h3>
+        <ol>
+          <li>Primitive Data Types (basic, built-in) <br>
+          byte, short, int, long, float, double, char, boolean</li>
+          <li>Non-Primitive Data Types (objects) <br> String, Arrays, Classes, Interfaces</li>
+        </ol>
+
+         <h3>Loops in Java</h3>
+         <p>Loops allow code to run repeatedly while a condition is true.</p>
+
+         <h3>Types of Loops:</h3>
+         <ul>
+          <li>for loop → Repeats a block a fixed number of times.</li>
+          <li>while loop → Repeats while condition is true.</li>
+          <li>do-while loop → Executes at least once, then checks condition.</li>
+          <li>for-each loop → Iterates through arrays/collections.</li>
+         </ul>
+
+         <h3>Loops in Java</h3>
+        <p>Loops are control statements that allow a block of code to be executed
+repeatedly as long as a condition is true. They help reduce code repetition and
+make programs more efficient.</p>
+
+         <h3>for loop</h3>
+         <ul>
+          <li>Used when the number of iterations is known in advance.</li>
+          <li>Syntax includes initialization, condition, and increment/decrement.</li>
+          <h4>
+            for (int i = 1; i <= 5; i++) { <br>
+              System.out.println("i = " + i); <br>
+            }
+          </h4>
+          <h3>Output:</h3>
+          <p>i = 1 <br>
+i = 2 <br>
+i = 3 <br>
+i = 4 <br>
+i = 5</p>
+</ul>
+
+          <h3>while loop</h3>
+          <ul>
+            <li>Used when the number of iterations is not known in advance.</li>
+            <li>The condition is checked before each iteration.</li>
+          </ul>
+          <h3>Output</h3>
+          <p>int j = 1; <br> while (j <= 5) { <br> System.out.println("j = " + j); <br> j++; <br> }</p>
+          </div>
+        </div>
+        </div>
+
+<div id="test" class="topic">
+         <div class="container2">
+             <div class="daily-task-container">
+             <h2>Daily Java Coding Task</h2>
+             <div class="task-timer" id="taskTimer">
+                <div class="date-display">📅 <span id="currentDate"></span></div>
+                <div class="streak-display">🔥 Streak: <span id="streakCount">0</span> days</div>
+              </div>
+             <div class="score-display">
+               <span>Correct: <span id="correctCount">0</span></span>
+               <span>Wrong: <span id="wrongCount">0</span></span>
+               <span>Total: <span id="totalCount">0</span></span>
+             </div>
+             <div id="questionSection" class="question-section">
+               <h3>Today's Question:</h3>
+               <div class="question-header">
+                 <p id="questionText" class="question-text"></p>
+                 <span id="difficultyBadge" class="difficulty-badge"></span>
+               </div>
+                <div class="attempts-info">
+                 <div class="attempt-progress" id="attemptProgress"></div>
+                 <span>Attempts: <strong id="attemptCount">0/3</strong></span>
+               </div>
+               <div id="answerSection" class="answer-section">
+                 <textarea id="userAnswer" class="user-answer-input" placeholder="Type your answer here... (Press Ctrl+Enter to submit)"></textarea>
+                 <div class="keyboard-hint">💡 Tip: Press Ctrl+Enter to submit quickly</div>
+                 <div class="answer-buttons">
+                   <button id="submitAnswer" class="submit-btn">Submit Answer</button>
+                   <button id="clearAnswer" class="clear-btn">Clear</button>
+                 </div>
+               </div>
+             </div>
+             <div class="previous-answers">
+               <h3>Your Answers:</h3>
+               <div id="previousAnswers" class="answers-list"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+         
+        <div id="Discussion" class="video-section">
+          <h2>Discussion Videos</h2>
+          <div class="video-warning">
+            <p>Be ready to take down notes as there will be mini quizzes as the video goes on.</p>
+          </div>
+
+          <!-- Quiz Status Panel -->
+          <div class="quiz-status-panel">
+            <h4><i class="fas fa-clipboard-check"></i> Quiz Progress</h4>
+            <div id="quizStatusList" class="quiz-status-list"></div>
+            <button id="retakeQuizBtn" class="retake-quiz-btn" style="display: none;">Retake All Quizzes</button>
+          </div>
+
+          <!-- Floating Video Notes Panel -->
+          <div id="videoNotesPanel" class="video-notes-panel" style="display: none;">
+            <div class="video-notes-header">
+              <span>Quick Notes</span>
+              <button id="closeVideoNotes" class="close-video-notes">&times;</button>
+            </div>
+            <div id="videoNotesList" class="video-notes-list"></div>
+            <textarea id="videoNoteInput" class="video-note-input-field" placeholder="Type a note and press Enter..."></textarea>
+          </div>
+          <button id="toggleVideoNotes" class="toggle-video-notes" title="Take Notes">
+            <i class="fas fa-sticky-note"></i> Notes
+          </button>
+          
+          <h4>JAVA</h4>
+          <div class="video-container">
+            <video class="video-thumb" data-modal="videoModal2" width="100%" height="auto">
+              <source src="javaedited.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-modal" id="videoModal2">
+            <div class="modal-content">
+              <video id="modalVideo2" controls>
+                <source src="javaedited.mp4" type="video/mp4">
+              </video>
+              <span class="close2">&times;</span>
+            </div>
+          </div>
+
+
+          <!-- Quiz Modal for Video -->
+          <div class="quiz-modal" id="videoQuizModal">
+            <div class="quiz-modal-content">
+              <button id="closeQuizModal" class="close-quiz-modal">&times;</button>
+              <div id="quizCountdown" class="quiz-countdown">
+                <div id="fullscreenWarning" class="fullscreen-warning" style="display: none;">
+                
+                </div>
+                <h3>Quiz Coming Up!</h3>
+                <p>Get ready in <span id="countdownTimer">10</span> seconds</p>
+                <button id="skipCountdownBtn" class="skip-countdown-btn">Skip & Take Quiz</button>
+                <div class="quiz-notes-section">
+                  <label for="quizNoteInput">Notes from Video:</label>
+                  <div id="videoNotesDisplay" class="video-notes-display"></div>
+                  <textarea id="quizNoteInput" class="quiz-note-input" placeholder="Take more notes while waiting..."></textarea>
+                </div>
+              </div>
+              <div id="quizContent" class="quiz-content" style="display: none;">
+                <h3>Mini Quiz!</h3>
+                <p id="quizQuestion"></p>
+                <div id="quizOptions"></div>
+                <div id="codeEditorSection" class="code-editor-section" style="display: none;">
+                  <label for="codeEditor">Write your HTML code:</label>
+                  <textarea id="codeEditor" class="code-editor" placeholder="Type your HTML code here..."></textarea>
+                  <div id="codeHints" class="code-hints"></div>
+                </div>
+                <p id="quizFeedback" class="quiz-feedback"></p>
+                <button id="quizSubmitBtn" class="quiz-submit-btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+       </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21
+    </footer>
+  </div>
+  <script src="javacode.js" defer></script>
+
+</body>
+</html>

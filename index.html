@@ -1,0 +1,365 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFrill | Homepage</title>
+<!--Linking Font Awesome for icons-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="homepage.css">
+     <link rel="stylesheet" href="profilemenu.css">
+     <link rel="stylesheet" href="darkmode.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+     <link rel="stylesheet" href="courses.css">
+    <script src="review.js" defer ></script>
+</head>
+<body>
+   <!--Header / Sidebar--> 
+<header>
+    <nav class="sidebar section-content">
+        <a href="#" class="nav-logo">
+            <h2 class="logo-text" href="index.html">CodeFrill</h2>
+        </a>
+
+            <button id="menu-open-button" class="fas fa-bars"></button>
+        <ul class="nav-menu">
+            <button id="menu-close-button" class="fas fa-times"></button>
+            <li class="nav-item">
+                <a href="#home" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#course" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    Course
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-info"></i>
+                    About
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="userprofile.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="code editor.html" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    Code Editor
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="matching tile.html" class="nav-link">
+                    <i class="fas fa-link"></i>
+                    Matching
+                </a>
+            </li>
+        
+            <button id="darkModeToggle" title="Toggle dark mode" style="margin-left: 15px; font-size: 1.2rem; color: #f1c40f;">
+        <i id="darkModeIcon" class="fa-solid fa-moon"></i>
+           
+
+        </ul>
+      </nav>
+ 
+    </header>
+
+<main>
+<!--Hero Section-->
+    <section class="hero-section" id="home">
+        <div class="hero-image-wrapper">
+            <img src="img/CodeFrill banner.jpg" alt="" class="hero-image">
+        </div>
+    </section>
+
+<!--Courses Section (carousel style) -->
+    <section class="course-section" id="course">
+        <h2 class="section-title">Programming Languages</h2>
+        <div class="course-swiper swiper">
+            <div class="swiper-wrapper">
+                <div class="course-card swiper-slide">
+                    <a href="htmlcode.html" class="card-link">
+                        <img src="img/html white.png" alt="HTML" class="card-image">
+                        <p class="badge">HTML</p>
+                        <h2 class="card-title">HTML is your gentle introduction to web development, where bold headlines and soft paragraphs come together with clarity and care.</h2>
+                    </a>
+                </div>
+                <div class="course-card swiper-slide">
+                    <a href="javacode.html" class="card-link">
+                        <img src="img/java white.png" alt="Java" class="card-image">
+                        <p class="badge java">Java</p>
+                        <h2 class="card-title">Java is your bold, full-bodied brew—crafted for building powerful, scalable applications that stand the test of time.</h2>
+                    </a>
+                </div>
+                <div class="course-card swiper-slide">
+                    <a href="jscode.html" class="card-link">
+                        <img src="img/js white.png" alt="JavaScript" class="card-image">
+                        <p class="badge js">JavaScript</p>
+                        <h2 class="card-title">JavaScript adds the sweetness and spark to your web creations—bringing static pages to life with motion, interaction, and personality.</h2>
+                    </a>
+                </div>
+                 <div class="course-card swiper-slide">
+                     <a href="csscode.html" class="card-link">
+                         <img src="img/css white.png" alt="CSS" class="card-image">
+                         <p class="badge css">CSS</p>
+                         <h2 class="card-title">CSS is the gentle touch of design—the garnish that transforms raw structure into visual harmony.</h2>
+                     </a>
+                 </div>
+                  <div class="course-card swiper-slide">
+                      <a href="sqlcode.html" class="card-link">
+                          <img src="img/sql white.png" alt="SQL" class="card-image">
+                          <p class="badge sql">SQL</p>
+                          <h2 class="card-title">SQL is the language of databases—structured, precise, and essential for managing data.</h2>
+                      </a>
+                  </div>
+             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+
+ <!-- About Section-->
+ <section class="about-section" id="about">
+     <div class="section-content">
+             <div class="about-image-wrapper">
+             <img src="img/programming.png" alt="About" class="about-image">
+             </div>
+         <div class="about-details">
+             <h2 class="section-title">About Us</h2>
+             <p class="text">At CodeFrill, we believe coding should feel like coming home to a space that understands you. Whether you're just starting out or refining your skills, this is your sanctuary—a place to grow at your own pace, without pressure or comparison.
+             <br><br>We're more than a platform. We're a companion for your journey. Here, you'll find hands-on challenges, real-world practice, and a community that celebrates small wins and honest effort. We know the road can be confusing, even discouraging at times. That's why we've built a space where learning feels safe, steady, and meaningful.
+             <br><br>From your first "Hello World" to your proudest project, we're here to support your quiet breakthroughs, your late-night triumphs, and your moments of doubt. Progress isn't a race—it's a rhythm. And at CodeFrill, we honor yours.
+             </p>
+             <div class="social-link-list">
+                 <a href="" class="social-link"><i class="fa-brands 
+                     fa-facebook"></i></a>
+                     <a href="" class="social-link"><i class="fa-brands 
+                     fa-instagram"></i></a>
+                     <a href="" class="social-link"><i class="fa-brands 
+                     fa-x-twitter"></i></a>
+             </div>
+         </div>
+</section>
+
+        <!-- Footer Section-->
+     <footer class="footer-section" id="contact">
+        <div class="section-content">
+            <p class="copyright-text">© CodeFrill | ITMAWD21</p>
+            <div class="social-link-list">
+                <a href="" class="social-link"><i class="fa-brands
+                    fa-facebook"></i></a>
+                    <a href="" class="social-link"><i class="fa-brands
+                    fa-instagram"></i></a>
+                    <a href="" class="social-link"><i class="fa-brands
+                    fa-x-twitter"></i></a>
+            </div>
+            <p class="policy-text">
+                <a href="#" class="policy-link">Privacy Policy</a>
+            </p>
+        </div>
+     </footer>
+</main>
+
+<!-- Courses Modal -->
+<div id="coursesModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+
+        <div class="swiper" style="width: 100%; height: 100%; position: relative;">
+            <div class="swiper-wrapper">
+                <div class="card-item swiper-slide">
+                    <a href="htmlcode.html" class="card-link">
+                        <img src="Website/img/HTML WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge">Html</p>
+                        <h2 class="card-title">HTML is your gentle introduction to web development, where bold headlines and soft paragraphs come together with clarity and care.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="javacode.html" class="card-link">
+                        <img src="Website/img/JAVA WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge java">Java</p>
+                        <h2 class="card-title">Java is your bold, full-bodied brew—crafted for building powerful, scalable applications that stand the test of time.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="jscode.html" class="card-link">
+                        <img src="Website/img/JS WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge js">JavaScript</p>
+                        <h2 class="card-title">JavaScript adds the sweetness and spark to your web creations—bringing static pages to life with motion, interaction, and personality.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="csscode.html" class="card-link">
+                        <img src="Website/img/CSS WHITE.png" alt="Card image" class="card-image">
+                        <p class="badge css">Css</p>
+                        <h2 class="card-title">CSS is the gentle touch of design—the garnish that transforms raw structure into visual harmony.</h2>
+                    </a>
+                </div>
+                <div class="card-item swiper-slide">
+                    <a href="sqlcode.html" class="card-link">
+                        <img src="Website/img/sql white.png" alt="Card image" class="card-image">
+                        <p class="badge sql">SQL</p>
+                        <h2 class="card-title">SQL is the language of databases—structured, precise, and essential for managing data.</h2>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Swiper Navigation and Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Side Panel -->
+<div id="sidePanel" class="side-panel">
+    <div class="side-panel-header">
+        <h3>Quick Access</h3>
+        <button id="closeSidePanel" class="close-panel-btn">&times;</button>
+    </div>
+    <div class="side-panel-content">
+        <button id="codeEditorRedirect" class="panel-btn">
+            <i class="fas fa-code"></i>
+            Open Code Editor
+        </button>
+        <button id="matchingGameRedirect" class="panel-btn">
+            <i class="fas fa-gamepad"></i>
+            Play Matching Game
+        </button>
+        <button id="recordsRedirect" class="panel-btn">
+            <i class="fas fa-trophy"></i>
+            View Records
+        </button>
+
+    </div>
+</div>
+
+<!-- Matching Game Modal -->
+<div id="matchingGameModal" class="modal">
+    <div class="modal-content" style="width: 90vw; height: 90vh; max-width: none; max-height: none; background: var(--white-color); transition: background-color 0.3s ease; user-select: none;" class="dark-mode-adapt">
+        <button class="back-btn" id="closeMatchingGameModal" style="position: absolute; top: 10px; left: 10px; background: var(--primary-color); color: var(--dark-color); border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; z-index: 1002; transition: background-color 0.3s ease, color 0.3s ease; user-select: none;">
+            <i class="fas fa-arrow-left"></i> 
+        </button>
+        <iframe id="matchingGameFrame" src="matching tile.html" style="width: 100%; height: 100%; border: none; user-select: none;"></iframe>
+    </div>
+</div>
+
+<script src="homepage.js"></script>
+<script src="darkmode.js"></script>
+<script src="menu.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// Matching Game Modal functionality
+function openMatchingGameModal() {
+    const modal = document.getElementById('matchingGameModal');
+    const body = document.body;
+
+    if (!modal) {
+        console.error('Matching game modal not found!');
+        return;
+    }
+
+    modal.classList.add('show');
+    body.classList.add('modal-open');
+}
+
+function closeMatchingGameModal() {
+    const modal = document.getElementById('matchingGameModal');
+    const body = document.body;
+
+    if (modal) {
+        modal.classList.remove('show');
+        body.classList.remove('modal-open');
+    }
+}
+
+// Nav link click handler - smooth scroll for anchor links, modal for matching
+document.querySelectorAll('.nav-link, .nav-logo').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+
+        if (href.startsWith('#')) {
+            // Handle smooth scroll for anchor links
+            e.preventDefault();
+            const targetId = href.substring(1);
+            if (targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        } else if (href === 'matching tile.html') {
+            // Open matching game modal instead of navigating
+            e.preventDefault();
+            openMatchingGameModal();
+        }
+    });
+});
+
+// Close matching game modal
+document.addEventListener('DOMContentLoaded', function() {
+    const closeMatchingBtn = document.getElementById('closeMatchingGameModal');
+    const matchingModal = document.getElementById('matchingGameModal');
+
+    if (closeMatchingBtn) {
+        closeMatchingBtn.addEventListener('click', closeMatchingGameModal);
+    }
+
+    if (matchingModal) {
+        matchingModal.addEventListener('click', function(e) {
+            if (e.target === matchingModal) {
+                closeMatchingGameModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && matchingModal && matchingModal.classList.contains('show')) {
+            closeMatchingGameModal();
+        }
+    });
+});
+
+// Records Redirect
+document.getElementById('recordsRedirect').addEventListener('click', function() {
+    const isDark = document.body.classList.contains('dark-mode');
+    window.location.href = `records.html?dark=${isDark ? '1' : '0'}`;
+});
+
+// Initialize Course Swiper
+new Swiper('.course-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});
+</script>
+</body>
+</html>

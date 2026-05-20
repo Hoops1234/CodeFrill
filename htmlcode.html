@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFrill | HTML</title>
+<link rel="stylesheet" href="htmlcode.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=book_4" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_outward" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="theme.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+     <a href="index.html">
+      <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+     </a> 
+      <h1>HTML</h1>
+      <div style="width: 60px;"></div> <!-- spacer to balance header -->
+    </header>
+    <div class="for-button">
+        <button id="modBtn" onclick="showtext('module')">Module</button>
+        <button id="testBtn" onclick="showText('test')">Daily task</button>
+        <button id="disBtn" onclick="showtext('Discussion')">Discussion</button>
+      </div>
+    <main>
+
+
+        <div id="module" class="handout">
+          <div class="topic">
+            <div class="handouttopic">
+        <h1>What Is HTML?</h1>
+         <p>HTML stands for HyperText Markup Language. It’s not a programming language that makes things move or calculate. <br>
+         It’s a markup language, which means it tells the computer how to organize and display content on a webpage. <br>
+        Think of HTML like the blueprint for a webpage. It doesn’t make things pretty or interactive, it builds the basic structure: <br> <br>
+      <h4> headings, paragraphs, images, links, and more.</h1></p>
+
+        <h1>How HTML Works</h1>
+        <p>HTML uses tags to mark different parts of a webpage. Tags are written inside angle <br> brackets like "tagname". Most tags come in pairs:</p>
+        <ul>
+        <li>An opening tag: "p"</li>
+        <li>A closing tag: "/p"</li>
+        </ul>
+        <p>Everything between those tags is the content that will be shown.</p>
+        <br><br>
+
+        <h3>!DOCTYPE HTML</h3>
+        <p>This tells the browser that the page uses HTML5, which is the latest version of HTML.</p>
+
+        <p>You only need this once at the very top of your file</p>
+
+        <h3>HTML and /HTML</h3>
+        <p>This wraps the entire HTML document. Everything goes inside these tags.</p>
+
+        <p>All your content goes here</p>
+
+        <h3>head and /head</h3>
+        <p>This section contains information about the webpage, not what people see. <br>
+        It can include the title, links to stylesheets, and other metadata.</p>
+        <p>For Example is <br>
+        head <br> "title" My Website "/title" </p>
+
+        <h3>title and /title</h3>
+        <p>This sets the name of the webpage that appears in the browser tab.</p>
+
+        <h3>body and /body</h3>
+        <p>This is where all the visible content goes headings, paragraphs, images, links, etc.</p>
+<h3>p and /p</h3>
+        <p>This tag is for paragraphs regular blocks of text.</p>
+
+        <h3>a and /a</h3>
+        <p>This tag creates a link to another page or website. <br> You need to add an href attribute to tell it where to go. </p>
+
+        <p>You will use it when you insert a link</p>
+
+        <h3>img</h3>
+        <p>This tag shows an image. It doesn't need a closing tag, <br> but it does need a src (source) and alt (alternative text).</p>
+
+        <h3>ul, ol, and li</h3>
+        <p>These tags create lists.</p>
+        <ul>
+          <li>ul  is for unordered lists (bullets)</li>
+          <li>ol  is for ordered lists (numbers)</li>
+          <li>li is for each list item</li>
+        </ul>
+
+        <h1>Additional HTML Elements</h1>
+
+        <h3>div and span</h3>
+        <p><strong>div</strong> is a block-level container used to group elements together. It creates a new line before and after it.</p>
+        <p><strong>span</strong> is an inline container used to group text or elements within a block. It doesn't create new lines.</p>
+        <p>Example: &lt;div&gt;This is a block container&lt;/div&gt;</p>
+
+        <h3>Tables</h3>
+        <p>HTML tables use these tags:</p>
+        <ul>
+          <li><strong>table</strong> - wraps the entire table</li>
+          <li><strong>tr</strong> - defines a table row</li>
+          <li><strong>th</strong> - defines a table header cell</li>
+          <li><strong>td</strong> - defines a table data cell</li>
+        </ul>
+        <p>Example:</p>
+        <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h3>Forms</h3>
+        <p>Forms collect user input. Key form tags:</p>
+        <ul>
+          <li><strong>form</strong> - wraps all form elements</li>
+          <li><strong>input</strong> - creates different input fields (text, password, checkbox, radio, etc.)</li>
+          <li><strong>textarea</strong> - for multi-line text input</li>
+          <li><strong>label</strong> - describes a form element</li>
+          <li><strong>button</strong> - creates clickable buttons</li>
+          <li><strong>select</strong> and <strong>option</strong> - create dropdown menus</li>
+        </ul>
+        <p>Example:</p>
+        <pre><code>&lt;form&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" id="username" name="username"&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+
+        <h3>Common Input Types</h3>
+        <ul>
+          <li><strong>type="text"</strong> - single-line text input</li>
+          <li><strong>type="password"</strong> - masked text input</li>
+          <li><strong>type="email"</strong> - email address input</li>
+          <li><strong>type="number"</strong> - numeric input</li>
+          <li><strong>type="checkbox"</strong> - checkbox for multiple choices</li>
+          <li><strong>type="radio"</strong> - radio button for single choice</li>
+          <li><strong>type="submit"</strong> - submit button</li>
+        </ul>
+
+        <h3>Semantic HTML5 Elements</h3>
+        <p>Semantic elements describe their purpose in the code:</p>
+        <ul>
+          <li><strong>header</strong> - introductory content or navigation</li>
+          <li><strong>nav</strong> - navigation links</li>
+          <li><strong>main</strong> - main content of the page</li>
+          <li><strong>section</strong> - thematic grouping of content</li>
+          <li><strong>article</strong> - self-contained content</li>
+          <li><strong>aside</strong> - content related to the main content</li>
+          <li><strong>footer</strong> - footer for a section or page</li>
+        </ul>
+
+        <h3>Attributes</h3>
+        <p>Attributes provide additional information about elements:</p>
+        <ul>
+          <li><strong>class</strong> - identifies elements for styling (multiple elements can share a class)</li>
+          <li><strong>id</strong> - unique identifier for one element (used for anchors and JavaScript)</li>
+          <li><strong>src</strong> - specifies the source URL for media (images, videos)</li>
+          <li><strong>href</strong> - specifies the destination URL for links</li>
+          <li><strong>alt</strong> - alternative text for images (accessibility and SEO)</li>
+          <li><strong>style</strong> - inline CSS styling</li>
+        </ul>
+
+        <h3>HTML Comments</h3>
+        <p>Comments are notes in the code that don't appear in the browser:</p>
+        <pre><code>&lt;!-- This is an HTML comment --&gt;
+&lt;!-- Comments can span
+     multiple lines --&gt;</code></pre>
+
+        <h3>Escape Characters (HTML Entities)</h3>
+        <p>Use these when you need special characters:</p>
+        <ul>
+          <li>&amp;lt; = &lt; (less than)</li>
+          <li>&amp;gt; = &gt; (greater than)</li>
+          <li>&amp;amp; = &amp; (ampersand)</li>
+          <li>&amp;quot; = &quot; (quotation mark)</li>
+          <li>&amp;nbsp; = non-breaking space</li>
+        </ul>
+
+        <h3>Meta Tags</h3>
+        <p>Metadata provides information about the document:</p>
+        <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;meta name="description" content="Page description for SEO"&gt;</code></pre>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li>Always indent nested elements for readability</li>
+          <li>Use semantic elements whenever possible</li>
+          <li>Include alt attributes on all images</li>
+          <li>Use lowercase for tag and attribute names</li>
+          <li>Close all tags properly</li>
+          <li>Validate your HTML (use W3C validator)</li>
+        </ul>
+
+        </div>
+      </div>
+    </div>
+
+<div id="test" class="topic">
+        <div class="container2">
+           <div class="daily-task-container">
+             <h2>Daily HTML Task</h2>
+             <div class="task-timer" id="taskTimer">
+                <div class="date-display">📅 <span id="currentDate"></span></div>
+                <div class="streak-display">🔥 Streak: <span id="streakCount">0</span> days</div>
+              </div>
+            <div class="score-display">
+              <span>Correct: <span id="correctCount">0</span></span>
+              <span>Wrong: <span id="wrongCount">0</span></span>
+              <span>Total: <span id="totalCount">0</span></span>
+            </div>
+             <div id="questionSection" class="question-section">
+               <h3>Today's Question:</h3>
+               <div class="question-header">
+                 <p id="questionText" class="question-text"></p>
+                 <span id="difficultyBadge" class="difficulty-badge"></span>
+               </div>
+               <div class="attempts-info">
+                 <div class="attempt-progress" id="attemptProgress"></div>
+                 <span>Attempts: <strong id="attemptCount">0/3</strong></span>
+               </div>
+               <div id="answerSection" class="answer-section">
+                 <textarea id="userAnswer" class="user-answer-input" placeholder="Type your answer here... (Press Ctrl+Enter to submit)"></textarea>
+                 <div class="keyboard-hint">💡 Tip: Press Ctrl+Enter to submit quickly</div>
+                 <div class="answer-buttons">
+                   <button id="submitAnswer" class="submit-btn">Submit Answer</button>
+                   <button id="clearAnswer" class="clear-btn">Clear</button>
+                 </div>
+               </div>
+             </div>
+            <div class="previous-answers">
+              <h3>Your Answers:</h3>
+              <div id="previousAnswers" class="answers-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+         
+        <div id="Discussion" class="video-section">
+          <h2>Discussion Videos</h2>
+          <div class="video-warning">
+            <p>Be ready to take down notes as there will be mini quizzes as the video goes on.</p>
+          </div>
+
+          <!-- Quiz Status Panel -->
+          <div class="quiz-status-panel">
+            <h4><i class="fas fa-clipboard-check"></i> Quiz Progress</h4>
+            <div id="quizStatusList" class="quiz-status-list"></div>
+            <button id="retakeQuizBtn" class="retake-quiz-btn" style="display: none;">Retake All Quizzes</button>
+          </div>
+
+          <!-- Floating Video Notes Panel -->
+          <div id="videoNotesPanel" class="video-notes-panel" style="display: none;">
+            <div class="video-notes-header">
+              <span>Quick Notes</span>
+              <button id="closeVideoNotes" class="close-video-notes">&times;</button>
+            </div>
+            <div id="videoNotesList" class="video-notes-list"></div>
+            <textarea id="videoNoteInput" class="video-note-input-field" placeholder="Type a note and press Enter..."></textarea>
+          </div>
+          <button id="toggleVideoNotes" class="toggle-video-notes" title="Take Notes">
+            <i class="fas fa-sticky-note"></i> Notes
+          </button>
+          
+          <h4>Html structure</h4>
+          <div class="video-container">
+            <video class="video-thumb" data-modal="videoModal2" width="100%" height="auto">
+              <source src="CrushkosiR.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-modal" id="videoModal2">
+            <div class="modal-content">
+              <video id="modalVideo2" controls>
+                <source src="CrushkosiR.mp4" type="video/mp4">
+              </video>
+              <span class="close2">&times;</span>
+            </div>
+          </div>
+
+
+          <!-- Quiz Modal for Video -->
+          <div class="quiz-modal" id="videoQuizModal">
+            <div class="quiz-modal-content">
+              <button id="closeQuizModal" class="close-quiz-modal">&times;</button>
+              <div id="quizCountdown" class="quiz-countdown">
+                <div id="fullscreenWarning" class="fullscreen-warning" style="display: none;">
+                
+                </div>
+                <h3>Quiz Coming Up!</h3>
+                <p>Get ready in <span id="countdownTimer">10</span> seconds</p>
+                <button id="skipCountdownBtn" class="skip-countdown-btn">Skip & Take Quiz</button>
+                <div class="quiz-notes-section">
+                  <label for="quizNoteInput">Notes from Video:</label>
+                  <div id="videoNotesDisplay" class="video-notes-display"></div>
+                  <textarea id="quizNoteInput" class="quiz-note-input" placeholder="Take more notes while waiting..."></textarea>
+                </div>
+              </div>
+              <div id="quizContent" class="quiz-content" style="display: none;">
+                <h3>Mini Quiz!</h3>
+                <p id="quizQuestion"></p>
+                <div id="quizOptions"></div>
+                <div id="codeEditorSection" class="code-editor-section" style="display: none;">
+                  <label for="codeEditor">Write your HTML code:</label>
+                  <textarea id="codeEditor" class="code-editor" placeholder="Type your HTML code here..."></textarea>
+                  <div id="codeHints" class="code-hints"></div>
+                </div>
+                <p id="quizFeedback" class="quiz-feedback"></p>
+                <button id="quizSubmitBtn" class="quiz-submit-btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      <!-- Notes section -->
+      <aside id="notepad" class="notes-section">
+        <div class="notes-header">
+          <span>Notes</span>
+          <span class="add-note-btn" title="Add Note">+</span>
+        </div>
+        <textarea class="note-input" placeholder="Write a note..."></textarea>
+        <div class="notes-list" id="notes-list">
+       </div>
+      </aside>
+      
+    </main>
+    <footer>
+      © CodeFrill | ITMAWD21
+    </footer>
+  </div>
+  <script src="dailyTask.js" defer></script>
+  <script src="htmlcode.js" defer></script>
+
+</body>
+</html>
